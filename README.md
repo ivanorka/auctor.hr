@@ -7,8 +7,11 @@ the approved branding proposal: Circle · Line · A.
 
 - `index.html` — complete single-page website and contact modal
 - `site.css` — responsive design, light/dark colour modes and modal styles
+- `v2/` — alternate website using the VER02 triangle-and-circle identity
+- `v3/` — alternate website using the VER03 progression identity
+- `variants.js` — shared reveal and contact-modal behaviour for VER02 and VER03
 - `contact.ashx` — server-side ASP.NET contact handler for IIS/MailEnable
-- `assets/` — VER01 logo assets and website photography
+- `assets/` — identity assets for all three proposals and website photography
 - `favicon.ico` and favicon assets — browser and mobile icons derived from the VER01 mark
 - `fonts/` — self-hosted Archivo and Bodoni Moda webfonts
 - `web.config.example` — non-secret IIS configuration template
