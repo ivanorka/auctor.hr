@@ -1,0 +1,294 @@
+<%@ WebHandler Language="C#" Class="ContactHandler" %>
+
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Mime;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Web;
+
+public sealed class ContactHandler : IHttpHandler
+{
+    private const int MaxRequestBytes = 65536;
+    private const int MaxAttempts = 5;
+    private static readonly TimeSpan AttemptWindow = TimeSpan.FromMinutes(10);
+    private static readonly ConcurrentDictionary<string, Queue<DateTime>> Attempts =
+        new ConcurrentDictionary<string, Queue<DateTime>>(StringComparer.Ordinal);
+
+    private static readonly IDictionary<string, string> Topics =
+        new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            { "business-opportunity", "Business opportunity" },
+            { "partnership", "Partnership" },
+            { "media", "Media enquiry" },
+            { "other", "Other" }
+        };
+
+    public bool IsReusable { get { return true; } }
+
+    public void ProcessRequest(HttpContext context)
+    {
+        SetSecurityHeaders(context.Response);
+
+        if (!String.Equals(context.Request.HttpMethod, "POST", StringComparison.OrdinalIgnoreCase))
+        {
+            Respond(context, 405, "This endpoint accepts contact form submissions only.");
+            return;
+        }
+
+        if (context.Request.ContentLength > MaxRequestBytes)
+        {
+            Respond(context, 413, "The message is too large.");
+            return;
+        }
+
+        if (!HasSameOrigin(context.Request))
+        {
+            Respond(context, 403, "The request could not be verified.");
+            return;
+        }
+
+        string clientKey = context.Request.UserHostAddress ?? "unknown";
+        if (!AllowAttempt(clientKey, DateTime.UtcNow))
+        {
+            Respond(context, 429, "Too many messages were submitted. Please try again later.");
+            return;
+        }
+
+        string honeypot = Clean(context.Request.Form["website"], 200);
+        if (!String.IsNullOrEmpty(honeypot))
+        {
+            Respond(context, 200, "Thank you. Your message has been sent.");
+            return;
+        }
+
+        string fullName = Clean(context.Request.Form["fullName"], 120);
+        string company = Clean(context.Request.Form["company"], 160);
+        string email = Clean(context.Request.Form["email"], 254);
+        string phone = Clean(context.Request.Form["phone"], 40);
+        string topicKey = Clean(context.Request.Form["topic"], 40);
+        string message = CleanMultiline(context.Request.Form["message"], 4000);
+        string consent = Clean(context.Request.Form["consent"], 10);
+
+        string topic;
+        if (fullName.Length < 2 || !IsValidEmail(email) ||
+            !Topics.TryGetValue(topicKey, out topic) || message.Length < 20 || consent != "yes")
+        {
+            Respond(context, 400, "Please complete all required fields with valid information.");
+            return;
+        }
+
+        string recipient = GetSetting("CONTACT_TO");
+        string sender = GetSetting("CONTACT_FROM");
+        if (!IsValidEmail(recipient) || !IsValidEmail(sender))
+        {
+            Trace.TraceError("contact.inquiry configuration missing: CONTACT_TO or CONTACT_FROM");
+            Respond(context, 503, "The contact service is temporarily unavailable. Please try again later.");
+            return;
+        }
+
+        try
+        {
+            SendMessage(recipient, sender, fullName, company, email, phone, topic, message);
+            Trace.TraceInformation("contact.inquiry accepted; topic={0}", topicKey);
+            Respond(context, 200, "Thank you. Your message has been sent.");
+        }
+        catch (Exception exception)
+        {
+            Trace.TraceError("contact.inquiry failed; type={0}", exception.GetType().Name);
+            Respond(context, 502, "Your message could not be sent. Please try again later.");
+        }
+    }
+
+    private static void SendMessage(
+        string recipient,
+        string sender,
+        string fullName,
+        string company,
+        string email,
+        string phone,
+        string topic,
+        string message)
+    {
+        string subjectCompany = String.IsNullOrEmpty(company) ? fullName : company;
+        string subject = "[Auctor website] " + topic + " — " + Truncate(subjectCompany, 80);
+
+        string textBody =
+            "New enquiry from auctor.hr\r\n\r\n" +
+            "Topic: " + topic + "\r\n" +
+            "Name: " + fullName + "\r\n" +
+            "Company: " + (String.IsNullOrEmpty(company) ? "Not provided" : company) + "\r\n" +
+            "Email: " + email + "\r\n" +
+            "Phone: " + (String.IsNullOrEmpty(phone) ? "Not provided" : phone) + "\r\n\r\n" +
+            "Message\r\n" + message + "\r\n\r\n" +
+            "This notification was generated by the contact form on auctor.hr.";
+
+        string htmlBody = BuildHtmlBody(fullName, company, email, phone, topic, message);
+
+        using (MailMessage mail = new MailMessage())
+        {
+            mail.From = new MailAddress(sender, "Auctor website");
+            mail.To.Add(new MailAddress(recipient));
+            mail.ReplyToList.Add(new MailAddress(email, fullName));
+            mail.Subject = subject;
+            mail.SubjectEncoding = Encoding.UTF8;
+            mail.BodyEncoding = Encoding.UTF8;
+            mail.Headers.Add("X-Auctor-Event", "contact.inquiry");
+            mail.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(
+                textBody, Encoding.UTF8, MediaTypeNames.Text.Plain));
+            mail.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(
+                htmlBody, Encoding.UTF8, MediaTypeNames.Text.Html));
+
+            using (SmtpClient smtp = BuildSmtpClient())
+            {
+                smtp.Send(mail);
+            }
+        }
+    }
+
+    private static SmtpClient BuildSmtpClient()
+    {
+        string host = GetSetting("SMTP_HOST");
+        if (String.IsNullOrWhiteSpace(host)) host = "127.0.0.1";
+
+        int port;
+        if (!Int32.TryParse(GetSetting("SMTP_PORT"), NumberStyles.Integer, CultureInfo.InvariantCulture, out port))
+            port = 25;
+
+        SmtpClient client = new SmtpClient(host, port);
+        client.EnableSsl = String.Equals(GetSetting("SMTP_SSL"), "true", StringComparison.OrdinalIgnoreCase);
+        client.Timeout = 10000;
+
+        string username = GetSetting("SMTP_USERNAME");
+        string password = GetSetting("SMTP_PASSWORD");
+        if (!String.IsNullOrWhiteSpace(username))
+        {
+            client.UseDefaultCredentials = false;
+            client.Credentials = new NetworkCredential(username, password ?? String.Empty);
+        }
+
+        return client;
+    }
+
+    private static string BuildHtmlBody(
+        string fullName,
+        string company,
+        string email,
+        string phone,
+        string topic,
+        string message)
+    {
+        Func<string, string> encode = HttpUtility.HtmlEncode;
+        string safeMessage = encode(message).Replace("\r\n", "<br>").Replace("\n", "<br>");
+
+        return "<!doctype html><html><body style=\"margin:0;background:#eef0f2;color:#0b1a24;font-family:Arial,sans-serif\">" +
+            "<div style=\"display:none;max-height:0;overflow:hidden\">New enquiry from auctor.hr</div>" +
+            "<table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"background:#eef0f2\"><tr><td align=\"center\" style=\"padding:32px 16px\">" +
+            "<table role=\"presentation\" width=\"600\" cellspacing=\"0\" cellpadding=\"0\" style=\"width:100%;max-width:600px;background:#ffffff;border-radius:16px;overflow:hidden\">" +
+            "<tr><td style=\"padding:28px 32px;background:#002638;color:#ffffff\"><div style=\"font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#d9c08a\">Auctor Group</div><h1 style=\"margin:10px 0 0;font:normal 28px Georgia,serif\">New website enquiry</h1></td></tr>" +
+            "<tr><td style=\"padding:28px 32px\">" +
+            Row("Topic", encode(topic)) + Row("Name", encode(fullName)) +
+            Row("Company", encode(String.IsNullOrEmpty(company) ? "Not provided" : company)) +
+            Row("Email", encode(email)) + Row("Phone", encode(String.IsNullOrEmpty(phone) ? "Not provided" : phone)) +
+            "<div style=\"margin-top:24px;padding-top:20px;border-top:1px solid #d9dee2\"><div style=\"margin-bottom:8px;font-size:12px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:#7e6329\">Message</div><div style=\"font-size:15px;line-height:1.65;color:#263944\">" + safeMessage + "</div></div>" +
+            "<p style=\"margin:28px 0 0;font-size:12px;line-height:1.5;color:#6b7c87\">Replying to this email will address the sender. This notification was generated by the contact form on auctor.hr.</p>" +
+            "</td></tr></table></td></tr></table></body></html>";
+    }
+
+    private static string Row(string label, string value)
+    {
+        return "<table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"border-bottom:1px solid #e1e5e8\"><tr>" +
+            "<td style=\"width:120px;padding:10px 12px 10px 0;font-size:12px;font-weight:bold;text-transform:uppercase;color:#7e6329\">" + label + "</td>" +
+            "<td style=\"padding:10px 0;font-size:15px;color:#263944\">" + value + "</td></tr></table>";
+    }
+
+    private static bool HasSameOrigin(HttpRequest request)
+    {
+        string origin = request.Headers["Origin"];
+        if (String.IsNullOrWhiteSpace(origin)) return true;
+
+        Uri originUri;
+        return Uri.TryCreate(origin, UriKind.Absolute, out originUri) &&
+            String.Equals(originUri.Host, request.Url.Host, StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool AllowAttempt(string key, DateTime now)
+    {
+        Queue<DateTime> queue = Attempts.GetOrAdd(key, delegate(string ignored) { return new Queue<DateTime>(); });
+        lock (queue)
+        {
+            while (queue.Count > 0 && now - queue.Peek() > AttemptWindow) queue.Dequeue();
+            if (queue.Count >= MaxAttempts) return false;
+            queue.Enqueue(now);
+            return true;
+        }
+    }
+
+    private static string Clean(string value, int maxLength)
+    {
+        if (String.IsNullOrWhiteSpace(value)) return String.Empty;
+        string cleaned = Regex.Replace(value.Trim(), @"[\r\n\t]+", " ");
+        return Truncate(cleaned, maxLength);
+    }
+
+    private static string CleanMultiline(string value, int maxLength)
+    {
+        if (String.IsNullOrWhiteSpace(value)) return String.Empty;
+        string cleaned = value.Trim().Replace("\0", String.Empty);
+        return Truncate(cleaned, maxLength);
+    }
+
+    private static string Truncate(string value, int maxLength)
+    {
+        return value.Length <= maxLength ? value : value.Substring(0, maxLength);
+    }
+
+    private static bool IsValidEmail(string value)
+    {
+        if (String.IsNullOrWhiteSpace(value) || value.Length > 254) return false;
+        try { return String.Equals(new MailAddress(value).Address, value, StringComparison.OrdinalIgnoreCase); }
+        catch { return false; }
+    }
+
+    private static string GetSetting(string name)
+    {
+        string value = Environment.GetEnvironmentVariable(name);
+        return String.IsNullOrWhiteSpace(value) ? ConfigurationManager.AppSettings[name] : value;
+    }
+
+    private static void SetSecurityHeaders(HttpResponse response)
+    {
+        response.Cache.SetCacheability(HttpCacheability.NoCache);
+        response.Cache.SetNoStore();
+        response.Headers["X-Content-Type-Options"] = "nosniff";
+        response.Headers["Referrer-Policy"] = "same-origin";
+    }
+
+    private static void Respond(HttpContext context, int statusCode, string message)
+    {
+        context.Response.StatusCode = statusCode;
+        bool wantsJson = (context.Request.Headers["Accept"] ?? String.Empty)
+            .IndexOf("application/json", StringComparison.OrdinalIgnoreCase) >= 0;
+
+        if (wantsJson)
+        {
+            context.Response.ContentType = "application/json; charset=utf-8";
+            context.Response.Write("{\"message\":\"" + HttpUtility.JavaScriptStringEncode(message) + "\"}");
+            return;
+        }
+
+        context.Response.ContentType = "text/html; charset=utf-8";
+        context.Response.Write(
+            "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width\"><title>Auctor Group</title>" +
+            "<body style=\"margin:0;background:#002638;color:#fff;font:16px/1.6 Arial,sans-serif\"><main style=\"max-width:620px;margin:12vh auto;padding:32px\">" +
+            "<p style=\"color:#d9c08a;text-transform:uppercase;letter-spacing:2px\">Auctor Group</p><h1 style=\"font:normal 42px Georgia,serif\">" +
+            HttpUtility.HtmlEncode(message) + "</h1><p><a href=\"/\" style=\"color:#d9c08a\">Return to the website</a></p></main></body></html>");
+    }
+}

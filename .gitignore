@@ -1,0 +1,11 @@
+# Production-only IIS and mail configuration
+web.config
+.env
+.env.*
+!.env.example
+
+# Local tooling
+.DS_Store
+*.user
+*.suo
+.vs/

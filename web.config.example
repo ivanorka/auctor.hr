@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copy to web.config on the IIS server and replace every placeholder there.
+     Do not commit the production web.config. Prefer IIS/app-pool environment
+     variables when the hosting provider supports them. -->
+<configuration>
+  <appSettings>
+    <add key="CONTACT_TO" value="CONTACT_INBOX_ON_SERVER" />
+    <add key="CONTACT_FROM" value="VERIFIED_ROLE_ADDRESS_ON_AUCTOR_DOMAIN" />
+    <add key="SMTP_HOST" value="127.0.0.1" />
+    <add key="SMTP_PORT" value="25" />
+    <add key="SMTP_SSL" value="false" />
+    <add key="SMTP_USERNAME" value="" />
+    <add key="SMTP_PASSWORD" value="" />
+  </appSettings>
+  <system.web>
+    <compilation debug="false" targetFramework="4.0" />
+    <httpRuntime targetFramework="4.0" maxRequestLength="64" executionTimeout="15" />
+    <customErrors mode="RemoteOnly" />
+  </system.web>
+  <system.webServer>
+    <httpErrors errorMode="DetailedLocalOnly" />
+    <security>
+      <requestFiltering>
+        <requestLimits maxAllowedContentLength="65536" />
+      </requestFiltering>
+    </security>
+  </system.webServer>
+</configuration>
