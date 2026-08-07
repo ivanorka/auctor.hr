@@ -237,7 +237,7 @@
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="hero__bg">
-      <picture>
+      <picture data-parallax="0.12" data-parallax-max="84">
         <source srcset="/assets/photos/hero.webp" type="image/webp">
         <img src="/assets/photos/hero.jpg" alt="Jadranska obala, jedno od ključnih turističkih tržišta Auctor Grupe" width="2400" height="1400" fetchpriority="high" decoding="async">
       </picture>
@@ -262,7 +262,7 @@
       </div>
     </div>
 
-    <p class="hero__seal" role="img" aria-label="Znak Auctora: krug, linija i slovo A">
+    <p class="hero__seal" data-parallax="-0.045" data-parallax-max="28" role="img" aria-label="Znak Auctora: krug, linija i slovo A">
       <span></span>
     </p>
   </section>
@@ -857,6 +857,7 @@
   </div>
 </dialog>
 
+<script src="/motion.js"></script>
 <script>
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');

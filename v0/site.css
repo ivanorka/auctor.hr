@@ -244,7 +244,7 @@
   }
 
   /* Znak: krug + linija + A. Linija izlazi iz kruga prema rubu ekrana. */
-  .sign { position: relative; }
+  .sign { position: relative; transform: translate3d(0, var(--parallax-y, 0px), 0); }
   .sign__art {
     position: relative;
     width: min(100%, 24rem); margin-inline: auto;
@@ -449,6 +449,7 @@
     html { scroll-behavior: auto; }
     .reveal, .sign__art { opacity: 1; transform: none; }
     .sign__line, .track__item::before { transform: none; }
+    .sign { transform: none; }
     *, *::before, *::after {
       animation-duration: .001ms !important; animation-delay: 0ms !important;
       transition-duration: .001ms !important; transition-delay: 0ms !important;

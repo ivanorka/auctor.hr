@@ -90,12 +90,12 @@
         </dl>
       </div>
       <div class="hero__visual" data-reveal>
-        <picture>
+        <picture data-parallax="0.1" data-parallax-max="68">
           <source srcset="../../assets/photos/hero.webp" type="image/webp">
           <img src="../../assets/photos/hero.jpg" alt="Jadranska obala i planine" width="2400" height="1400" fetchpriority="high">
         </picture>
         <span class="hero__veil" aria-hidden="true"></span>
-        <img class="hero__mark" src="../../assets/identities/v2-mark-gold.png" alt="" width="900" height="900" aria-hidden="true">
+        <img class="hero__mark" data-parallax="-0.035" data-parallax-max="24" src="../../assets/identities/v2-mark-gold.png" alt="" width="900" height="900" aria-hidden="true">
         <p class="hero__caption">Simbol vizije, povjerenja i stvaranja dugoročne vrijednosti.</p>
       </div>
     </div>
@@ -265,6 +265,7 @@
   </div>
 </dialog>
 
+<script src="/motion.js"></script>
 <script src="/variants.js"></script>
 </body>
 </html>

@@ -74,7 +74,7 @@
 <main id="main">
   <section class="hero">
     <div class="hero__image" aria-hidden="true">
-      <picture><source srcset="../../assets/photos/traka.webp" type="image/webp"><img src="../../assets/photos/traka.jpg" alt="" width="2400" height="1000" fetchpriority="high"></picture>
+      <picture data-parallax="0.08" data-parallax-max="64"><source srcset="../../assets/photos/traka.webp" type="image/webp"><img src="../../assets/photos/traka.jpg" alt="" width="2400" height="1000" fetchpriority="high"></picture>
     </div>
     <span class="hero__veil" aria-hidden="true"></span>
     <div class="shell hero__grid">
@@ -86,7 +86,7 @@
         <div class="hero__actions"><a class="button" href="#portfolio">Pogledajte portfelj</a><a class="text-link" href="#about">Rezultati 2025. <span aria-hidden="true">→</span></a></div>
       </div>
       <div class="hero__symbol" data-reveal>
-        <img src="../../assets/identities/v3-mark-gold.png" alt="" width="1096" height="900" aria-hidden="true">
+        <img data-parallax="-0.03" data-parallax-max="22" src="../../assets/identities/v3-mark-gold.png" alt="" width="1096" height="900" aria-hidden="true">
         <p>Jedna ideja. Tri sloja. Kontinuiran rast.</p>
       </div>
       <dl class="hero__facts" data-reveal>
@@ -209,6 +209,7 @@
   </div>
 </dialog>
 
+<script src="/motion.js"></script>
 <script src="/variants.js"></script>
 </body>
 </html>
