@@ -9,6 +9,7 @@ the approved branding proposal: Circle · Line · A.
 - `site.css` — responsive design, light/dark colour modes and modal styles
 - `contact.ashx` — server-side ASP.NET contact handler for IIS/MailEnable
 - `assets/` — VER01 logo assets and website photography
+- `favicon.ico` and favicon assets — browser and mobile icons derived from the VER01 mark
 - `fonts/` — self-hosted Archivo and Bodoni Moda webfonts
 - `web.config.example` — non-secret IIS configuration template
 - `DEPLOYMENT.md` — deployment and mail configuration checklist
