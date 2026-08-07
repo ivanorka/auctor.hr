@@ -7,7 +7,7 @@ the approved branding proposal: Circle · Line · A.
 
 - `index.html` — complete single-page website and contact modal
 - `site.css` — responsive design, light/dark colour modes and modal styles
-- `v0/` — preserved original Croatian website, with only routing and the version switch adapted
+- `v0/` — refined original Croatian website with the shared contact form and V0–V3 switcher
 - `v2/` — alternate website using the VER02 triangle-and-circle identity
 - `v3/` — alternate website using the VER03 progression identity
 - `variants.js` — shared reveal and contact-modal behaviour for VER02 and VER03

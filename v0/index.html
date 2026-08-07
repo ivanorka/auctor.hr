@@ -66,9 +66,6 @@
         { "@id": "https://www.auctor.hr/#auctor-doo" },
         { "@type": "Organization", "name": "Aminess Group", "description": "Turistička grupa s 33 hotela, kampova i resorta u 12 destinacija." },
         { "@type": "Organization", "name": "Medika d.d.", "description": "Vodeći hrvatski distributer lijekova i medicinskih proizvoda s vlastitom ljekarničkom mrežom." }
-      ],
-      "contactPoint": [
-        { "@type": "ContactPoint", "contactType": "opći kontakt", "email": "auctor@auctor.hr", "availableLanguage": ["hr", "en"] }
       ]
     },
     {
@@ -156,7 +153,7 @@
         <a href="/v2/">V2</a>
         <a href="/v3/">V3</a>
       </nav>
-      <a class="btn" href="#kontakt">Kontakt</a>
+      <button class="btn js-contact-open" type="button">Kontakt</button>
     </div>
   </div>
   <div class="shell"><nav class="top__scroll" aria-label="Navigacija (mobitel)">
@@ -167,7 +164,7 @@
     <a class="top__link" href="#investitori">Za investitore</a>
     <a class="top__link" href="#novosti">Novosti</a>
     <a class="top__link" href="#pitanja">Pitanja</a>
-    <a class="top__link" href="#kontakt">Kontakt</a>
+    <button class="top__link js-contact-open" type="button">Kontakt</button>
   </nav></div>
 </header>
 
@@ -668,13 +665,12 @@
         <p class="eyebrow">Kontakt</p>
         <h2 id="kontakt-h" class="h2">Razgovarajmo.</h2>
         <p class="lede" style="margin-top:1.5rem">
-          Za poslovne prijedloge, investitorske upite i medije koristite javno navedeni
-          kontakt hrvatskog društva AUCTOR d.o.o.
+          Za poslovne prijedloge, upite za partnerstvo i medije ispunite kratki obrazac.
+          Vaša će poruka biti proslijeđena odgovarajućoj osobi u Auctoru.
         </p>
-        <p style="margin-top:2rem"><a class="btn" href="mailto:auctor@auctor.hr">Pošalji upit</a></p>
+        <p style="margin-top:2rem"><button class="btn js-contact-open" type="button">Otvori kontakt obrazac</button></p>
       </div>
       <div class="c6">
-        <div class="k"><p class="k__k">E-pošta</p><p class="k__v"><a href="mailto:auctor@auctor.hr">auctor@auctor.hr</a></p></div>
         <div class="k"><p class="k__k">AUCTOR d.o.o.</p><p class="k__v">Ulica kneza Branimira 71/E<br>10000 Zagreb, Hrvatska</p></div>
         <div class="k"><p class="k__k">Pravni podaci</p><p class="k__v">OIB 19203050598 · MB 01209043</p></div>
         <div class="k"><p class="k__k">Javni registar</p><p class="k__v"><a href="https://infobiz.fina.hr/tvrtka/auctor-d-o-o/OIB-19203050598" target="_blank" rel="noopener">FINA Info.BIZ →</a></p></div>
@@ -716,7 +712,7 @@
       <nav class="foot__col" aria-labelledby="f-4">
         <h3 id="f-4">Kontakt</h3>
         <ul>
-          <li><a href="mailto:auctor@auctor.hr">auctor@auctor.hr</a></li>
+          <li><button class="foot__contact js-contact-open" type="button">Kontakt obrazac</button></li>
           <li><a href="https://infobiz.fina.hr/tvrtka/auctor-d-o-o/OIB-19203050598" target="_blank" rel="noopener">FINA profil</a></li>
           <li><a href="#novosti">Novosti</a></li>
         </ul>
@@ -736,6 +732,70 @@
     </p>
   </div>
 </footer>
+
+<dialog class="contact-modal" id="contact-dialog" aria-labelledby="contact-dialog-title">
+  <div class="contact-modal__panel">
+    <header class="contact-modal__head">
+      <div>
+        <p class="eyebrow">Kontaktirajte Auctor</p>
+        <h2 id="contact-dialog-title">Započnimo razgovor.</h2>
+      </div>
+      <button class="contact-modal__close" type="button" aria-label="Zatvori kontakt obrazac" data-contact-close>×</button>
+    </header>
+
+    <form class="contact-form" id="contact-form" action="/contact.ashx" method="post">
+      <p class="contact-form__intro">Ostavite nekoliko podataka kako bismo vaš upit usmjerili odgovarajućoj osobi.</p>
+
+      <div class="contact-form__grid">
+        <label class="field">
+          <span>Ime i prezime</span>
+          <input type="text" name="fullName" autocomplete="name" maxlength="120" required>
+        </label>
+        <label class="field">
+          <span>Tvrtka</span>
+          <input type="text" name="company" autocomplete="organization" maxlength="160">
+        </label>
+        <label class="field">
+          <span>Poslovna e-pošta</span>
+          <input type="email" name="email" autocomplete="email" inputmode="email" maxlength="254" required>
+        </label>
+        <label class="field">
+          <span>Telefon <small>neobavezno</small></span>
+          <input type="tel" name="phone" autocomplete="tel" maxlength="40">
+        </label>
+        <label class="field field--wide">
+          <span>Tema</span>
+          <select name="topic" required>
+            <option value="">Odaberite temu</option>
+            <option value="business-opportunity">Poslovna prilika</option>
+            <option value="partnership">Partnerstvo</option>
+            <option value="media">Upit za medije</option>
+            <option value="other">Ostalo</option>
+          </select>
+        </label>
+        <label class="field field--wide">
+          <span>Poruka</span>
+          <textarea name="message" rows="6" minlength="20" maxlength="4000" required></textarea>
+        </label>
+      </div>
+
+      <label class="contact-form__consent">
+        <input type="checkbox" name="consent" value="yes" required>
+        <span>Pristajem da Auctor koristi ove podatke isključivo kako bi odgovorio na moj upit.</span>
+      </label>
+
+      <label class="contact-form__trap" aria-hidden="true">
+        <span>Web-stranica</span>
+        <input type="text" name="website" tabindex="-1" autocomplete="off">
+      </label>
+
+      <div class="contact-form__actions">
+        <button class="btn" type="submit">Pošalji poruku</button>
+        <p class="contact-form__status" id="contact-form-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
+</dialog>
 
 <script>
 (function () {
@@ -798,5 +858,6 @@
   draw('prihodi');
 })();
 </script>
+<script src="../variants.js"></script>
 </body>
 </html>

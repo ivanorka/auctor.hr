@@ -150,6 +150,7 @@
     position: relative; white-space: nowrap;
     padding: .5rem .75rem; border-radius: var(--r-pill);
     font-size: .9375rem; color: var(--ink-2);
+    border: 0; background: transparent; font-family: inherit; cursor: pointer;
     transition-property: background-color, color;
     transition-duration: 180ms; transition-timing-function: var(--ease-out);
   }
@@ -463,6 +464,53 @@
   .k__v a { border-bottom: 1px solid var(--line-2); }
   @media (hover: hover) and (pointer: fine) { .k__v a:hover { border-bottom-color: var(--gold); } }
 
+  /* ---------- Kontakt obrazac ---------- */
+  .contact-modal {
+    width: min(760px, calc(100% - 2rem)); max-height: min(90dvh, 900px);
+    margin: auto; padding: 0; overflow: auto;
+    border: 0; border-radius: var(--r-out);
+    background: var(--surface); color: var(--ink); box-shadow: var(--sh-2);
+  }
+  .contact-modal::backdrop { background: rgba(0, 13, 20, .72); backdrop-filter: blur(8px); }
+  .contact-modal__panel { padding: clamp(1.25rem, 4vw, 2.5rem); }
+  .contact-modal__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; }
+  .contact-modal__head h2 { margin-top: .75rem; font-size: clamp(1.75rem, 4vw, 2.75rem); }
+  .contact-modal__close {
+    flex: none; display: grid; place-items: center; width: 44px; height: 44px;
+    border: 1px solid var(--line); border-radius: 50%; background: var(--bg-2); color: var(--ink);
+    font: 300 1.75rem/1 var(--sans); cursor: pointer;
+    transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out);
+  }
+  .contact-modal__close:active { transform: scale(.94); }
+  .contact-form { margin-top: 1.75rem; }
+  .contact-form__intro { color: var(--ink-2); max-width: 56ch; }
+  .contact-form__grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.5rem; }
+  @media (min-width: 42rem) {
+    .contact-form__grid { grid-template-columns: 1fr 1fr; }
+    .field--wide { grid-column: 1 / -1; }
+  }
+  .field { display: grid; gap: .45rem; }
+  .field > span { font-size: .8125rem; font-weight: 600; color: var(--ink-2); }
+  .field small { font-weight: 400; color: var(--ink-3); }
+  .field input, .field select, .field textarea {
+    width: 100%; min-height: 48px; padding: .75rem .875rem;
+    border: 1px solid var(--line-2); border-radius: var(--r-in);
+    background: var(--bg); color: var(--ink); font: inherit; font-size: 1rem;
+    transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+  }
+  .field textarea { min-height: 9rem; resize: vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: 0; border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold-solid) 22%, transparent);
+  }
+  .contact-form__consent { display: flex; align-items: flex-start; gap: .75rem; margin-top: 1.25rem; color: var(--ink-2); font-size: .8125rem; }
+  .contact-form__consent input { flex: none; width: 1.1rem; height: 1.1rem; margin-top: .15rem; accent-color: var(--navy); }
+  .contact-form__trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .contact-form__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 1.5rem; }
+  .contact-form__actions .btn:disabled { opacity: .6; cursor: wait; }
+  .contact-form__status { flex: 1 1 16rem; min-height: 1.4em; font-size: .875rem; color: var(--ink-3); }
+  .contact-form__status.is-success { color: light-dark(#23613C, #8ED5A8); }
+  .contact-form__status.is-error { color: light-dark(#9A2D2D, #FFAAAA); }
+
   /* ---------- Za investitore: kalendar i dokumenti ----------
      Uzeto od Sofine (kalendar odmah na naslovnici) i Adrisa
      (dokumenti složeni po godinama, s formatom i veličinom). */
@@ -514,7 +562,9 @@
   .foot__col h3 { font-family: var(--sans); font-size: .75rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-solid); }
   .foot__col ul { margin-top: 1rem; display: grid; gap: .55rem; }
   .foot__col a { font-size: .9375rem; color: rgba(238,243,246,.76); }
+  .foot__contact { padding: 0; border: 0; background: transparent; color: rgba(238,243,246,.76); font: inherit; font-size: .9375rem; cursor: pointer; }
   @media (hover: hover) and (pointer: fine) { .foot__col a:hover { color: #fff; } }
+  @media (hover: hover) and (pointer: fine) { .foot__contact:hover { color: #fff; } }
   .foot__brand { margin-top: 3rem; padding-top: 1.75rem; border-top: 1px solid rgba(255,255,255,.16); display: flex; flex-wrap: wrap; gap: 1.5rem 2rem; align-items: center; justify-content: space-between; }
   .foot__legal { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem 1.75rem; font-size: .8125rem; color: rgba(238,243,246,.55); }
 }
@@ -571,6 +621,7 @@
   @media (prefers-reduced-transparency: reduce) {
     .top { background: var(--bg); backdrop-filter: none; -webkit-backdrop-filter: none; }
     .panel, .btn--quiet, .seal__disc { background: var(--surface); backdrop-filter: none; -webkit-backdrop-filter: none; }
+    .contact-modal::backdrop { backdrop-filter: none; }
   }
   @media (prefers-contrast: more) {
     :root { --ink-2: light-dark(#22323C, rgba(244,248,250,.92)); --ink-3: light-dark(#394A55, rgba(244,248,250,.8)); --line: light-dark(rgba(11,26,36,.34), rgba(255,255,255,.36)); }

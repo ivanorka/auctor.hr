@@ -46,13 +46,38 @@
 
   var form = document.getElementById('contact-form');
   var status = document.getElementById('contact-form-status');
+  var isCroatian = document.documentElement.lang.toLowerCase().indexOf('hr') === 0;
+  var messages = isCroatian ? {
+    sending: 'Šaljemo poruku…',
+    success: 'Hvala. Vaša je poruka poslana.',
+    invalid: 'Provjerite obavezna polja i pokušajte ponovno.',
+    limited: 'Poslano je previše poruka. Pokušajte ponovno kasnije.',
+    unavailable: 'Kontakt usluga trenutačno nije dostupna. Pokušajte ponovno kasnije.',
+    failed: 'Poruku nije moguće poslati. Pokušajte ponovno.'
+  } : {
+    sending: 'Sending your message…',
+    success: 'Thank you. Your message has been sent.',
+    invalid: 'Please complete all required fields with valid information.',
+    limited: 'Too many messages were submitted. Please try again later.',
+    unavailable: 'The contact service is temporarily unavailable. Please try again later.',
+    failed: 'Your message could not be sent. Please try again.'
+  };
+
+  function responseError(response, data) {
+    if (!isCroatian && data.message) return data.message;
+    if (response.status === 400) return messages.invalid;
+    if (response.status === 429) return messages.limited;
+    if (response.status === 502 || response.status === 503) return messages.unavailable;
+    return messages.failed;
+  }
+
   if (form && window.fetch) {
     form.addEventListener('submit', function (event) {
       event.preventDefault();
       var submit = form.querySelector('[type="submit"]');
       submit.disabled = true;
       status.className = 'contact-form__status';
-      status.textContent = 'Sending your message…';
+      status.textContent = messages.sending;
 
       fetch(form.action, {
         method: 'POST',
@@ -61,13 +86,13 @@
         credentials: 'same-origin'
       }).then(function (response) {
         return response.json().catch(function () { return {}; }).then(function (data) {
-          if (!response.ok) throw new Error(data.message || 'Your message could not be sent. Please try again.');
+          if (!response.ok) throw new Error(responseError(response, data));
           return data;
         });
       }).then(function () {
         form.reset();
         status.className = 'contact-form__status is-success';
-        status.textContent = 'Thank you. Your message has been sent.';
+        status.textContent = messages.success;
       }).catch(function (error) {
         status.className = 'contact-form__status is-error';
         status.textContent = error.message;
