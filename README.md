@@ -11,8 +11,8 @@ the approved branding proposal: Circle · Line · A.
   `contact.css`, the shared contact behavior and the V0–V3 path are added
 - `v2/` — alternate website using the VER02 triangle-and-circle identity
 - `v3/` — alternate website using the VER03 progression identity
-- `variants.js` — shared reveal and contact-modal behaviour for VER02 and VER03
-- `contact.ashx` — server-side ASP.NET contact handler for IIS/MailEnable
+- `variants.js` — shared reveal, contact-modal and dual Netlify/IIS submission behaviour
+- `contact.ashx` — server-side ASP.NET contact handler for the future IIS production host
 - `assets/` — identity assets for all three proposals and website photography
 - `favicon.ico` and favicon assets — browser and mobile icons derived from the VER01 mark
 - `fonts/` — self-hosted Archivo and Bodoni Moda webfonts
@@ -31,9 +31,9 @@ Direct links to these sources are included on the website.
 
 ## Local preview
 
-Serve the repository root with any static HTTP server and open `/`. The page itself is
-static; contact delivery requires ASP.NET 4 on IIS and the server-only settings described
-in `DEPLOYMENT.md`.
+Serve the repository root with any static HTTP server and open `/`. The page itself is static.
+On `auctor.orka.solutions`, submissions use Netlify Forms. On the future IIS production host,
+the same forms fall back to the ASP.NET handler and server-only settings in `DEPLOYMENT.md`.
 
 The canonical homepage is the only indexable version. `/v0/`, `/v2/` and `/v3/` remain
 accessible as identity previews but deliberately use `noindex,follow` and point their canonical

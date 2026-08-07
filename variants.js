@@ -79,12 +79,24 @@
       status.className = 'contact-form__status';
       status.textContent = messages.sending;
 
-      fetch(form.action, {
+      var isNetlify = window.location.hostname === 'auctor.orka.solutions' || /(^|\.)netlify\.app$/.test(window.location.hostname);
+      var formData = new FormData(form);
+      var request = isNetlify ? {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      } : {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
-        body: new FormData(form),
+        body: formData,
         credentials: 'same-origin'
-      }).then(function (response) {
+      };
+
+      fetch(isNetlify ? '/' : form.action, request).then(function (response) {
+        if (isNetlify) {
+          if (!response.ok) throw new Error(responseError(response, {}));
+          return {};
+        }
         return response.json().catch(function () { return {}; }).then(function (data) {
           if (!response.ok) throw new Error(responseError(response, data));
           return data;

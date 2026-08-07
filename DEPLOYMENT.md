@@ -1,7 +1,24 @@
 # Deployment
 
-The current `auctor.hr` endpoint identifies itself as Microsoft IIS 10 with ASP.NET 4 and
-MailEnable. The website therefore uses a portable ASP.NET `.ashx` contact handler and SMTP.
+The preview at `auctor.orka.solutions` is hosted by Netlify. The future `auctor.hr` production
+endpoint identifies itself as Microsoft IIS 10 with ASP.NET 4 and MailEnable, so the website
+also retains a portable ASP.NET `.ashx` contact handler and SMTP fallback.
+
+## Netlify preview
+
+Each design route contains a uniquely named static form (`contact-v0` through `contact-v3`)
+with Netlify form detection and a honeypot enabled. On `auctor.orka.solutions` and Netlify
+deploy-preview domains, JavaScript submits URL-encoded form data to the site root, as required
+by Netlify Forms.
+
+In the Netlify project UI:
+
+1. Open **Forms** and enable automatic form detection if it is not already enabled.
+2. Redeploy the site so Netlify scans all four static forms.
+3. Add a form-submission email notification for the required internal inbox.
+4. Send one test from each route and confirm it appears under the corresponding form name.
+
+The checked-in `.ashx` file is not executed by Netlify; it remains solely for IIS deployment.
 
 ## Files to publish
 

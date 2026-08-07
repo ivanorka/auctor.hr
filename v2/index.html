@@ -240,7 +240,8 @@
 <dialog class="contact-modal" id="contact-dialog" aria-labelledby="contact-dialog-title">
   <div class="contact-modal__panel">
     <header class="contact-modal__head"><div><p class="kicker">Contact Auctor</p><h2 id="contact-dialog-title">Start a conversation.</h2></div><button class="contact-modal__close" type="button" aria-label="Close contact form" data-contact-close>×</button></header>
-    <form class="contact-form" id="contact-form" action="/contact.ashx" method="post">
+    <form class="contact-form" id="contact-form" name="contact-v2" action="/contact.ashx" method="post" data-netlify="true" netlify-honeypot="website">
+      <input type="hidden" name="form-name" value="contact-v2">
       <p>Share a few details and our team will route your enquiry to the right person.</p>
       <div class="contact-form__grid">
         <label class="field"><span>Full name</span><input type="text" name="fullName" autocomplete="name" maxlength="120" required></label>

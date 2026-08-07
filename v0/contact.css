@@ -1,7 +1,11 @@
-/* Functional additions for V0. All visual values reuse the original V0 design tokens. */
+/* Functional additions for V0. Visual values come exclusively from the untouched V0 source. */
 @layer blocks {
-  @media (max-width: 36rem) {
-    .top__side > .btn { display: none; }
+  .btn { font-family: var(--font-sans); }
+
+  .masthead__side .lang {
+    gap: .45rem;
+    padding-right: var(--gutter);
+    white-space: nowrap;
   }
 
   .contact-modal {
@@ -10,26 +14,27 @@
     margin: auto;
     padding: 0;
     overflow: auto;
-    border: 0;
-    border-radius: var(--r-out);
-    background: var(--surface);
-    color: var(--ink);
-    box-shadow: var(--sh-2);
+    border: 1px solid var(--hairline);
+    background: var(--navy);
+    color: var(--white);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, .42);
   }
   .contact-modal::backdrop {
-    background: rgba(0, 13, 20, .72);
-    backdrop-filter: blur(8px);
+    background: rgba(0, 13, 20, .82);
+    backdrop-filter: blur(10px);
   }
-  .contact-modal__panel { padding: clamp(1.25rem, 4vw, 2.5rem); }
+  .contact-modal__panel { padding: clamp(1.5rem, 5vw, 3.5rem); }
   .contact-modal__head {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 2rem;
   }
+  .contact-modal__head .eyebrow { margin-bottom: 1.25rem; }
+  .contact-modal__head .eyebrow::before { display: none; }
   .contact-modal__head h2 {
-    margin-top: .75rem;
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-size: var(--step-3);
+    color: var(--white);
   }
   .contact-modal__close {
     flex: none;
@@ -37,57 +42,69 @@
     place-items: center;
     width: 44px;
     height: 44px;
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    background: var(--bg-2);
-    color: var(--ink);
-    font: 300 1.75rem/1 var(--sans);
+    padding: 0;
+    border: 1px solid var(--hairline);
+    background: transparent;
+    color: var(--white);
     cursor: pointer;
-    transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out);
+    transition: border-color .25s ease, color .25s ease;
   }
-  .contact-modal__close:active { transform: scale(.94); }
-  .contact-form { margin-top: 1.75rem; }
+  .contact-modal__close:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .contact-modal__close svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+  }
+
+  .contact-form { margin-top: 2rem; }
   .contact-form__intro {
-    max-width: 56ch;
-    color: var(--ink-2);
+    max-width: 58ch;
+    color: var(--white-soft);
   }
   .contact-form__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-top: 1.5rem;
+    gap: 1.25rem;
+    margin-top: 2rem;
   }
   @media (min-width: 42rem) {
     .contact-form__grid { grid-template-columns: 1fr 1fr; }
     .field--wide { grid-column: 1 / -1; }
   }
-  .field {
-    display: grid;
-    gap: .45rem;
-  }
+  .field { display: grid; gap: .5rem; }
   .field > span {
-    color: var(--ink-2);
-    font-size: .8125rem;
+    color: var(--gold-soft);
+    font-size: .6875rem;
     font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
   }
   .field small {
-    color: var(--ink-3);
+    color: var(--white-mute);
     font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
   }
   .field input,
   .field select,
   .field textarea {
     width: 100%;
     min-height: 48px;
-    padding: .75rem .875rem;
-    border: 1px solid var(--line-2);
-    border-radius: var(--r-in);
-    background: var(--bg);
-    color: var(--ink);
-    font: inherit;
-    font-size: 1rem;
-    transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+    padding: .8rem .9rem;
+    border: 1px solid var(--hairline);
+    border-radius: 0;
+    background: var(--void);
+    color: var(--white);
+    font: 400 1rem/1.5 var(--font-sans);
+    transition: border-color .2s ease, box-shadow .2s ease;
   }
+  .field select { color-scheme: dark; }
   .field textarea {
     min-height: 9rem;
     resize: vertical;
@@ -97,14 +114,14 @@
   .field textarea:focus {
     outline: 0;
     border-color: var(--gold);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold-solid) 22%, transparent);
+    box-shadow: 0 0 0 1px var(--gold);
   }
   .contact-form__consent {
     display: flex;
     align-items: flex-start;
     gap: .75rem;
-    margin-top: 1.25rem;
-    color: var(--ink-2);
+    margin-top: 1.5rem;
+    color: var(--white-soft);
     font-size: .8125rem;
   }
   .contact-form__consent input {
@@ -112,7 +129,7 @@
     width: 1.1rem;
     height: 1.1rem;
     margin-top: .15rem;
-    accent-color: var(--navy);
+    accent-color: var(--gold);
   }
   .contact-form__trap {
     position: absolute;
@@ -126,20 +143,34 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 1rem;
-    margin-top: 1.5rem;
+    margin-top: 1.75rem;
   }
   .contact-form__actions .btn:disabled {
-    opacity: .6;
+    opacity: .55;
     cursor: wait;
   }
   .contact-form__status {
     flex: 1 1 16rem;
     min-height: 1.4em;
-    color: var(--ink-3);
-    font-size: .875rem;
+    color: var(--white-mute);
+    font-size: .8125rem;
   }
-  .contact-form__status.is-success { color: light-dark(#23613C, #8ED5A8); }
-  .contact-form__status.is-error { color: light-dark(#9A2D2D, #FFAAAA); }
+  .contact-form__status.is-success { color: #9DDEB4; }
+  .contact-form__status.is-error { color: #FFB0B0; }
+
+  @media (max-width: 69.99rem) and (min-width: 62rem) {
+    .masthead__side > .btn { display: none; }
+    .nav { gap: 1.15rem; }
+  }
+
+  @media (max-width: 41.99rem) {
+    .contact-modal {
+      width: calc(100% - 1rem);
+      max-height: calc(100dvh - 1rem);
+    }
+    .contact-modal__head { gap: 1rem; }
+    .contact-modal__panel { padding: 1.25rem; }
+  }
 }
 
 @layer motion {
