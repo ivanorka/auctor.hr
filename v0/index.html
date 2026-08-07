@@ -24,9 +24,10 @@
 <meta property="og:url" content="https://www.auctor.hr/">
 <meta name="twitter:card" content="summary">
 
-<link rel="stylesheet" href="../fonts/fonts.css">
-<link rel="stylesheet" href="../assets/mark.css">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/mark.css">
+<link rel="stylesheet" href="auctor-2026.css">
+<link rel="stylesheet" href="contact.css">
 
 <script type="application/ld+json">
 {
@@ -135,8 +136,8 @@
 <header class="top">
   <div class="shell top__in">
     <a class="top__logo" href="/v0/" aria-label="Auctor Group V0 — početna stranica">
-      <img class="is-light" src="../assets/lockup-v1-onLight.png" alt="Auctor Group" width="1200" height="440">
-      <img class="is-dark" src="../assets/lockup-v1-onDark.png" alt="" width="1200" height="440" aria-hidden="true">
+      <img class="is-light" src="assets/lockup-v1-onLight.png" alt="Auctor Group" width="1200" height="440">
+      <img class="is-dark" src="assets/lockup-v1-onDark.png" alt="" width="1200" height="440" aria-hidden="true">
     </a>
     <nav class="top__nav" aria-label="Glavna navigacija">
       <a class="top__link" href="#grupa">O nama</a>
@@ -147,8 +148,8 @@
       <a class="top__link" href="#novosti">Novosti</a>
     </nav>
     <div class="top__side">
-      <nav class="version-switch" aria-label="Verzije dizajna">
-        <a href="/v0/" aria-current="page">V0</a>
+      <nav class="lang" aria-label="Verzije dizajna">
+        <a href="/v0/" aria-current="true">V0</a>
         <a href="/">V1</a>
         <a href="/v2/">V2</a>
         <a href="/v3/">V3</a>
@@ -164,7 +165,7 @@
     <a class="top__link" href="#investitori">Za investitore</a>
     <a class="top__link" href="#novosti">Novosti</a>
     <a class="top__link" href="#pitanja">Pitanja</a>
-    <button class="top__link js-contact-open" type="button">Kontakt</button>
+    <a class="top__link" href="#kontakt">Kontakt</a>
   </nav></div>
 </header>
 
@@ -174,8 +175,8 @@
   <section class="hero">
     <div class="hero__bg">
       <picture>
-        <source srcset="../assets/photos/hero.webp" type="image/webp">
-        <img src="../assets/photos/hero.jpg" alt="" width="2400" height="1400" fetchpriority="high" decoding="async">
+        <source srcset="assets/photos/hero.webp" type="image/webp">
+        <img src="assets/photos/hero.jpg" alt="" width="2400" height="1400" fetchpriority="high" decoding="async">
       </picture>
     </div>
     <div class="hero__scrim" aria-hidden="true"></div>
@@ -361,8 +362,8 @@
       <article class="co grid" data-in>
         <div class="c4">
           <picture class="co__photo">
-            <source srcset="../assets/photos/turizam.webp" type="image/webp">
-            <img src="../assets/photos/turizam.jpg" alt="Bazen hotela uz more" width="1600" height="1100" loading="lazy" decoding="async">
+            <source srcset="assets/photos/turizam.webp" type="image/webp">
+            <img src="assets/photos/turizam.jpg" alt="Bazen hotela uz more" width="1600" height="1100" loading="lazy" decoding="async">
           </picture>
           <p class="co__tag">01 — Turizam</p>
           <h3 style="margin-top:.875rem">Aminess</h3>
@@ -386,8 +387,8 @@
       <article class="co grid" data-in>
         <div class="c4">
           <picture class="co__photo">
-            <source srcset="../assets/photos/farmacija.webp" type="image/webp">
-            <img src="../assets/photos/farmacija.jpg" alt="Medicinska oprema u bolničkoj sobi" width="1600" height="1100" loading="lazy" decoding="async">
+            <source srcset="assets/photos/farmacija.webp" type="image/webp">
+            <img src="assets/photos/farmacija.jpg" alt="Medicinska oprema u bolničkoj sobi" width="1600" height="1100" loading="lazy" decoding="async">
           </picture>
           <p class="co__tag">02 — Farmacija</p>
           <h3 style="margin-top:.875rem">Medika</h3>
@@ -414,8 +415,8 @@
   <section class="band" aria-label="Poruka brenda">
     <div class="band__bg">
       <picture>
-        <source srcset="../assets/photos/traka.webp" type="image/webp">
-        <img src="../assets/photos/traka.jpg" alt="" width="2400" height="1000" loading="lazy" decoding="async">
+        <source srcset="assets/photos/traka.webp" type="image/webp">
+        <img src="assets/photos/traka.jpg" alt="" width="2400" height="1000" loading="lazy" decoding="async">
       </picture>
     </div>
     <div class="band__scrim" aria-hidden="true"></div>
@@ -712,7 +713,7 @@
       <nav class="foot__col" aria-labelledby="f-4">
         <h3 id="f-4">Kontakt</h3>
         <ul>
-          <li><button class="foot__contact js-contact-open" type="button">Kontakt obrazac</button></li>
+          <li><a href="#kontakt">Kontakt obrazac</a></li>
           <li><a href="https://infobiz.fina.hr/tvrtka/auctor-d-o-o/OIB-19203050598" target="_blank" rel="noopener">FINA profil</a></li>
           <li><a href="#novosti">Novosti</a></li>
         </ul>
@@ -720,7 +721,7 @@
     </div>
 
     <div class="foot__brand">
-      <img src="../assets/lockup-v1-onDark.png" alt="Auctor Group" width="1200" height="440" style="width:170px" loading="lazy">
+      <img src="assets/lockup-v1-onDark.png" alt="Auctor Group" width="1200" height="440" style="width:170px" loading="lazy">
       <p class="cap" style="color:rgba(238,243,246,.6);max-width:34ch">
         Investicijska grupa u turizmu, farmaciji i povezanim regionalnim ulaganjima.
       </p>
