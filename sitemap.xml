@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.auctor.hr/</loc>
     <lastmod>2026-08-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.auctor.hr/" />
+    <xhtml:link rel="alternate" hreflang="hr" href="https://www.auctor.hr/hr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.auctor.hr/" />
     <image:image>
       <image:loc>https://www.auctor.hr/assets/photos/hero.jpg</image:loc>
       <image:title>Auctor Group hospitality markets on the Adriatic coast</image:title>
@@ -15,6 +19,25 @@
     <image:image>
       <image:loc>https://www.auctor.hr/assets/photos/farmacija.jpg</image:loc>
       <image:title>Medika pharmaceutical distribution and retail</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.auctor.hr/hr/</loc>
+    <lastmod>2026-08-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.auctor.hr/" />
+    <xhtml:link rel="alternate" hreflang="hr" href="https://www.auctor.hr/hr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.auctor.hr/" />
+    <image:image>
+      <image:loc>https://www.auctor.hr/assets/photos/hero.jpg</image:loc>
+      <image:title>Turistička tržišta Auctor Grupe na jadranskoj obali</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.auctor.hr/assets/photos/turizam.jpg</image:loc>
+      <image:title>Turistički portfelj Aminessa</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.auctor.hr/assets/photos/farmacija.jpg</image:loc>
+      <image:title>Distribucija i maloprodaja farmaceutskih proizvoda Medike</image:title>
     </image:image>
   </url>
 </urlset>

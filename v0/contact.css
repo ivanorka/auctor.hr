@@ -2,9 +2,12 @@
 @layer blocks {
   .btn { font-family: var(--font-sans); }
 
+  .masthead__side {
+    padding-right: var(--gutter);
+  }
+
   .masthead__side .lang {
     gap: .45rem;
-    padding-right: var(--gutter);
     white-space: nowrap;
   }
 

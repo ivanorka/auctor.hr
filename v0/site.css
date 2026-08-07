@@ -179,6 +179,15 @@
   .lang { display: flex; gap: .5rem; font-size: var(--step--1); letter-spacing: .08em; color: var(--white-mute); }
   .lang a { text-decoration: none; }
   .lang [aria-current="true"] { color: var(--gold); font-weight: 600; }
+  .locale-switch { display: flex; gap: .5rem; padding-left: .9rem; border-left: 1px solid rgba(255,255,255,.22); font-size: var(--step--1); letter-spacing: .08em; color: var(--white-mute); }
+  .locale-switch a { text-decoration: none; }
+  .locale-switch [aria-current] { color: var(--gold); font-weight: 600; }
+  @media (max-width: 34rem) {
+    .brand img { width: 104px; }
+    .masthead__side { gap: .7rem; }
+    .lang { gap: .35rem; }
+    .locale-switch { gap: .35rem; padding-left: .65rem; }
+  }
 
   /* ---------- Gumbi ---------- */
   .btn {
