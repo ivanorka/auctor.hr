@@ -7,6 +7,7 @@ the approved branding proposal: Circle · Line · A.
 
 - `index.html` — complete single-page website and contact modal
 - `site.css` — responsive design, light/dark colour modes and modal styles
+- `v0/` — preserved original Croatian website, with only routing and the version switch adapted
 - `v2/` — alternate website using the VER02 triangle-and-circle identity
 - `v3/` — alternate website using the VER03 progression identity
 - `variants.js` — shared reveal and contact-modal behaviour for VER02 and VER03
@@ -33,7 +34,8 @@ Serve the repository root with any static HTTP server and open `/`. The page its
 static; contact delivery requires ASP.NET 4 on IIS and the server-only settings described
 in `DEPLOYMENT.md`.
 
-The canonical homepage is the only indexable version. `/v2/` and `/v3/` remain accessible as
-identity previews but deliberately use `noindex,follow` and point their canonical link to `/`.
+The canonical homepage is the only indexable version. `/v0/`, `/v2/` and `/v3/` remain
+accessible as identity previews but deliberately use `noindex,follow` and point their canonical
+link to `/`.
 
 No recipient address, SMTP password or other production secret is stored in this repository.

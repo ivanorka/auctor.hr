@@ -64,9 +64,9 @@ public URLs, serves the branded 404 page and enables compression and security he
    - an unknown URL — `404`, showing the branded error page rather than returning `200`
 2. Confirm that `http://auctor.hr/`, `https://auctor.hr/` and explicit `index.html` URLs each
    perform one permanent redirect to the matching `https://www.auctor.hr/` URL.
-3. Confirm that `/v2/` and `/v3/` remain crawlable and return `200`, while their HTML contains
-   `noindex,follow`. Do not block these paths in `robots.txt`; crawlers must fetch the pages to
-   see the `noindex` instruction.
+3. Confirm that `/v0/`, `/v2/` and `/v3/` remain crawlable and return `200`, while their HTML
+   contains `noindex,follow`. Do not block these paths in `robots.txt`; crawlers must fetch the
+   pages to see the `noindex` instruction.
 4. Add the `https://www.auctor.hr/` property in Google Search Console and Bing Webmaster Tools.
    Submit `https://www.auctor.hr/sitemap.xml`, inspect the homepage and request indexing.
 5. Test the homepage with Google's Rich Results Test and Schema Markup Validator. Confirm that
@@ -78,5 +78,6 @@ public URLs, serves the branded 404 page and enables compression and security he
    image and serves WebP alternatives; verify compression and long-lived asset caching at the
    host/CDN level without applying long caching to HTML.
 
-Only the canonical homepage appears in the XML sitemap. The two identity previews are excluded
-intentionally because they duplicate the same corporate content and are not search landing pages.
+Only the canonical homepage appears in the XML sitemap. The preserved V0 and the two identity
+previews are excluded intentionally because they duplicate the same corporate content and are
+not search landing pages.
