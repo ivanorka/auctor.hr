@@ -14,8 +14,11 @@ the approved branding proposal: Circle · Line · A.
 - `assets/` — identity assets for all three proposals and website photography
 - `favicon.ico` and favicon assets — browser and mobile icons derived from the VER01 mark
 - `fonts/` — self-hosted Archivo and Bodoni Moda webfonts
+- `robots.txt` and `sitemap.xml` — canonical crawl and index signals
+- `site.webmanifest` — site identity and installable icon metadata
+- `404.html` — branded, non-indexable error page
 - `web.config.example` — non-secret IIS configuration template
-- `DEPLOYMENT.md` — deployment and mail configuration checklist
+- `DEPLOYMENT.md` — deployment, mail and SEO launch checklist
 
 ## Content sources
 
@@ -29,5 +32,8 @@ Direct links to these sources are included on the website.
 Serve the repository root with any static HTTP server and open `/`. The page itself is
 static; contact delivery requires ASP.NET 4 on IIS and the server-only settings described
 in `DEPLOYMENT.md`.
+
+The canonical homepage is the only indexable version. `/v2/` and `/v3/` remain accessible as
+identity previews but deliberately use `noindex,follow` and point their canonical link to `/`.
 
 No recipient address, SMTP password or other production secret is stored in this repository.
