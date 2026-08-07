@@ -46,5 +46,37 @@ used as an email relay.
 
 At the time of implementation, `auctor.hr` resolved to `213.202.100.77` and presented a
 self-signed certificate on the MailEnable endpoint. Install a publicly trusted certificate
-and bind the production website before launch. Do not collect form data over an untrusted
-TLS connection.
+and bind the production website before copying `web.config.example` to production. Its
+canonical redirect and HSTS header assume that trusted HTTPS is already working. Do not
+collect form data over an untrusted TLS connection.
+
+The production configuration requires the IIS URL Rewrite module. It permanently redirects
+HTTP and non-`www` requests to `https://www.auctor.hr/`, removes explicit `index.html` from
+public URLs, serves the branded 404 page and enables compression and security headers.
+
+## SEO launch checklist
+
+1. Verify that each of these responds over trusted HTTPS:
+   - `https://www.auctor.hr/` — `200`
+   - `https://www.auctor.hr/robots.txt` — `200`, `text/plain`
+   - `https://www.auctor.hr/sitemap.xml` — `200`, XML content type
+   - `https://www.auctor.hr/404.html` — file is available to IIS for custom errors
+   - an unknown URL — `404`, showing the branded error page rather than returning `200`
+2. Confirm that `http://auctor.hr/`, `https://auctor.hr/` and explicit `index.html` URLs each
+   perform one permanent redirect to the matching `https://www.auctor.hr/` URL.
+3. Confirm that `/v2/` and `/v3/` remain crawlable and return `200`, while their HTML contains
+   `noindex,follow`. Do not block these paths in `robots.txt`; crawlers must fetch the pages to
+   see the `noindex` instruction.
+4. Add the `https://www.auctor.hr/` property in Google Search Console and Bing Webmaster Tools.
+   Submit `https://www.auctor.hr/sitemap.xml`, inspect the homepage and request indexing.
+5. Test the homepage with Google's Rich Results Test and Schema Markup Validator. Confirm that
+   the `Corporation`, `Organization`, `WebSite`, `WebPage` and `ImageObject` entities resolve
+   without errors and use the production URLs.
+6. Use Search Console's HTTPS and Page indexing reports after deployment. Check again after
+   Google has crawled the site and investigate any duplicate-canonical, redirect or 404 issues.
+7. Run Lighthouse on a cold mobile load. The site self-hosts its fonts, preloads only the hero
+   image and serves WebP alternatives; verify compression and long-lived asset caching at the
+   host/CDN level without applying long caching to HTML.
+
+Only the canonical homepage appears in the XML sitemap. The two identity previews are excluded
+intentionally because they duplicate the same corporate content and are not search landing pages.

@@ -1,0 +1,22 @@
+{
+  "name": "Auctor Group",
+  "short_name": "Auctor",
+  "description": "A Croatian investment group building leading hospitality and healthcare businesses.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F6F7F8",
+  "theme_color": "#002638",
+  "icons": [
+    {
+      "src": "/assets/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
