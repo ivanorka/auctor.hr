@@ -22,6 +22,30 @@
          before publishing this production-only canonical redirect. -->
     <rewrite>
       <rules>
+        <rule name="Retired V0 English" stopProcessing="true">
+          <match url="^v0/en/?$" ignoreCase="true" />
+          <action type="Redirect" url="https://www.auctor.hr/" redirectType="Permanent" />
+        </rule>
+        <rule name="Retired V0 Croatian" stopProcessing="true">
+          <match url="^v0/?$" ignoreCase="true" />
+          <action type="Redirect" url="https://www.auctor.hr/hr/" redirectType="Permanent" />
+        </rule>
+        <rule name="Explicit V1 English" stopProcessing="true">
+          <match url="^v1(?:/en)?/?$" ignoreCase="true" />
+          <action type="Redirect" url="https://www.auctor.hr/" redirectType="Permanent" />
+        </rule>
+        <rule name="Explicit V1 Croatian" stopProcessing="true">
+          <match url="^v1/hr/?$" ignoreCase="true" />
+          <action type="Redirect" url="https://www.auctor.hr/hr/" redirectType="Permanent" />
+        </rule>
+        <rule name="Retired V3 English" stopProcessing="true">
+          <match url="^v3/?$" ignoreCase="true" />
+          <action type="Redirect" url="https://www.auctor.hr/v2/" redirectType="Permanent" />
+        </rule>
+        <rule name="Retired V3 Croatian" stopProcessing="true">
+          <match url="^v3/hr/?$" ignoreCase="true" />
+          <action type="Redirect" url="https://www.auctor.hr/v2/hr/" redirectType="Permanent" />
+        </rule>
         <rule name="Remove index.html" stopProcessing="true">
           <match url="^(.*\/)?index\.html$" ignoreCase="true" />
           <action type="Redirect" url="https://www.auctor.hr/{R:1}" appendQueryString="true" redirectType="Permanent" />

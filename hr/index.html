@@ -14,15 +14,13 @@
 <link rel="alternate" hreflang="hr" href="https://www.auctor.hr/hr/">
 <link rel="alternate" hreflang="x-default" href="https://www.auctor.hr/">
 
-<meta name="theme-color" content="#F6F7F8" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#001622" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#000D14">
 
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/assets/photos/hero.webp" as="image" type="image/webp">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="hr_HR">
@@ -43,9 +41,9 @@
 <meta name="twitter:image" content="https://www.auctor.hr/assets/photos/hero.jpg">
 <meta name="twitter:image:alt" content="Jadranska obala, jedno od ključnih turističkih tržišta Auctor Grupe">
 
-<link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/assets/mark.css">
-<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/v1/fonts/fonts.css">
+<link rel="stylesheet" href="/v1/site.css">
+<link rel="stylesheet" href="/v1/contact.css">
 
 <script type="application/ld+json">
 {
@@ -182,7 +180,7 @@
       "isPartOf": { "@id": "https://www.auctor.hr/#website" },
       "about": { "@id": "https://www.auctor.hr/#organisation" },
       "primaryImageOfPage": { "@id": "https://www.auctor.hr/#primaryimage" },
-      "dateModified": "2026-08-07",
+      "dateModified": "2026-08-08",
       "inLanguage": "hr"
     }
   ]
@@ -192,603 +190,388 @@
 <body>
 <a class="skip" href="#main">Prijeđi na sadržaj</a>
 
-<header class="top">
-  <div class="shell top__in">
-    <a class="top__logo" href="/hr/" aria-label="Auctor Group — početna">
-      <img class="is-light" src="/assets/lockup-v1-onLight.png" alt="Auctor Group" width="1200" height="440">
-      <img class="is-dark" src="/assets/lockup-v1-onDark.png" alt="" width="1200" height="440" aria-hidden="true">
+<header class="masthead">
+  <div class="masthead__inner">
+    <a class="brand" href="/hr/" aria-label="Auctor Group V1 — početna">
+      <img src="/v1/assets/lockup-v1-onDark.png" alt="Auctor Group" width="1200" height="440">
     </a>
-    <nav class="top__nav" aria-label="Glavna navigacija">
-      <a class="top__link" href="#group">O grupi</a>
-      <a class="top__link" href="#portfolio">Portfelj</a>
-      <a class="top__link" href="#value-creation">Stvaranje vrijednosti</a>
-      <a class="top__link" href="#governance">Upravljanje</a>
-      <a class="top__link" href="#documents">Dokumenti</a>
-      <a class="top__link" href="#updates">Novosti</a>
+    <nav class="nav" aria-label="Glavna navigacija">
+      <a class="nav__link" href="#grupa">Grupa</a>
+      <a class="nav__link" href="#pristup">Pristup</a>
+      <a class="nav__link" href="#portfelj">Portfelj</a>
+      <a class="nav__link" href="#rast">Rast</a>
+      <a class="nav__link" href="#uprava">Uprava</a>
+      <a class="nav__link" href="#kontakt">Kontakt</a>
     </nav>
-    <div class="top__side">
-      <nav class="version-switch" aria-label="Verzije dizajna">
-        <a href="/v0/">V0</a>
-        <a href="/hr/" aria-current="page">V1</a>
+    <div class="masthead__side">
+      <button class="btn btn--compact js-contact-open" type="button"><span>Kontakt</span></button>
+      <nav class="lang" aria-label="Verzije dizajna">
+        <a href="/hr/" aria-current="true">V1</a>
         <a href="/v2/hr/">V2</a>
-        <a href="/v3/hr/">V3</a>
       </nav>
-      <nav class="lang" aria-label="Jezici">
+      <nav class="locale-switch" aria-label="Jezici">
         <a href="/hr/" lang="hr" hreflang="hr" aria-current="page">HR</a>
         <a href="/" lang="en" hreflang="en">EN</a>
       </nav>
-      <button class="btn js-contact-open" type="button">Kontakt</button>
     </div>
   </div>
-  <div class="shell"><nav class="top__scroll" aria-label="Mobilna navigacija">
-    <a class="top__link" href="#group">O grupi</a>
-    <a class="top__link" href="#portfolio">Portfelj</a>
-    <a class="top__link" href="#value-creation">Stvaranje vrijednosti</a>
-    <a class="top__link" href="#governance">Upravljanje</a>
-    <a class="top__link" href="#documents">Dokumenti</a>
-    <a class="top__link" href="#updates">Novosti</a>
-    <a class="top__link" href="#faq">Pitanja</a>
-    <button class="top__link js-contact-open" type="button">Kontakt</button>
-  </nav></div>
 </header>
 
 <main id="main">
 
-  <!-- ================= HERO ================= -->
-  <section class="hero">
-    <div class="hero__bg">
-      <picture data-parallax="0.12" data-parallax-max="84">
-        <source srcset="/assets/photos/hero.webp" type="image/webp">
-        <img src="/assets/photos/hero.jpg" alt="Jadranska obala, jedno od ključnih turističkih tržišta Auctor Grupe" width="2400" height="1400" fetchpriority="high" decoding="async">
-      </picture>
-    </div>
-    <div class="hero__scrim" aria-hidden="true"></div>
-
-    <div class="shell grid">
-      <div class="c8">
-        <p class="eyebrow" data-in style="--i:0">Investicijska grupa · Zagreb</p>
-        <h1 data-in style="--i:1">Potpisujemo ono što <em>gradimo.</em></h1>
-        <p class="hero__lede" data-in style="--i:2">
-          Auctor povezuje kapital i operativno znanje u turizmu, zdravstvu i povezanim
-          ulaganjima u Hrvatskoj i Srednjoj Europi.
+  <!-- ============ HERO ============ -->
+  <section class="section hero">
+    <div class="shell hero__grid">
+      <div>
+        <p class="eyebrow reveal">Investicijska grupa · Zagreb</p>
+        <h1 class="hero__title reveal reveal--d1">Potpisujemo<br>ono što <em>gradimo.</em></h1>
+        <p class="hero__lede reveal reveal--d2">
+          Auctor preuzima hrvatske tvrtke koje vode svoja tržišta — u turizmu i farmaciji —
+          ulaže u njihovu imovinu i ostaje vlasnik. Od 2019. do danas.
         </p>
-        <div class="hero__cta" data-in style="--i:3">
-          <a class="btn" href="#portfolio">Pogledajte portfelj</a>
-          <a class="btn btn--quiet" href="#group">Rezultati 2025.</a>
+        <div class="hero__actions reveal reveal--d3">
+          <a class="btn btn--solid" href="#portfelj"><span>Pogledaj portfelj</span></a>
+          <button class="btn btn--ghost js-contact-open" type="button"><span>Kontaktirajte nas</span></button>
         </div>
-        <p class="hero__meta" data-in style="--i:4">
-          <span>Osnovano 2019.</span><span>4 zemlje</span><span>2.200+ prosječno zaposlenih</span>
+        <p class="hero__meta reveal reveal--d3">
+          <span>Osnovano 2019.</span>
+          <span>Turizam i farmacija</span>
+          <span>Oko 3.500 zaposlenih</span>
         </p>
       </div>
-    </div>
 
-    <p class="hero__seal" data-parallax="-0.045" data-parallax-max="28" role="img" aria-label="Znak Auctora: krug, linija i slovo A">
-      <span></span>
-    </p>
+      <figure class="sign" data-parallax="-0.04" data-parallax-max="24" style="margin:0">
+        <span class="sign__line" aria-hidden="true"></span>
+        <div class="sign__art" role="img" aria-label="Znak Auctora: krug, linija i slovo A"></div>
+        <figcaption class="sign__caption">
+          Stvaramo vrijednost vizijom i vodstvom.
+          <span>Krug · Linija · A</span>
+        </figcaption>
+      </figure>
+    </div>
   </section>
 
-  <!-- ================= AUDIENCE PATHWAYS ================= -->
-  <section class="section section--tint" aria-labelledby="pathways-h">
+  <!-- ============ BROJKE ============ -->
+  <section class="section section--navy section--thread" id="grupa" aria-labelledby="grupa-h">
     <div class="shell">
-      <h2 id="pathways-h" class="u-hide">Odaberite sadržaj</h2>
-      <div class="doors">
-        <a class="door" href="#group" data-in style="--i:0">
-          <span class="door__in">
-            <h3>Grupa</h3>
-            <p>Revidirani rezultati za 2025., vlasnička struktura i izvorni dokumenti.</p>
-            <span class="door__go">Rezultati i činjenice →</span>
-          </span>
-        </a>
-        <a class="door" href="#approach" data-in style="--i:1">
-          <span class="door__in">
-            <h3>Vlasnici tvrtki</h3>
-            <p>Kako povezujemo akvizicije, upravljanje, razvoj imovine i operativni rast.</p>
-            <span class="door__go">Naš pristup →</span>
-          </span>
-        </a>
-        <a class="door" href="#faq" data-in style="--i:2">
-          <span class="door__in">
-            <h3>Mediji</h3>
-            <p>Provjerene činjenice o Grupi, podaci za 2025. i poveznice na javne izvore.</p>
-            <span class="door__go">Činjenice i odgovori →</span>
-          </span>
-        </a>
+      <p class="eyebrow reveal">Grupa u 2024.</p>
+      <h2 class="u-hidden" id="grupa-h">Grupa u brojkama</h2>
+      <div class="figures">
+        <div class="figure reveal">
+          <p class="figure__value">944 <span class="figure__unit">mn €</span></p>
+          <p class="figure__label">Konsolidirani prihodi</p>
+        </div>
+        <div class="figure reveal reveal--d1">
+          <p class="figure__value">65 <span class="figure__unit">mn €</span></p>
+          <p class="figure__label">EBITDA</p>
+        </div>
+        <div class="figure reveal reveal--d2">
+          <p class="figure__value">809 <span class="figure__unit">mn €</span></p>
+          <p class="figure__label">Vrijednost imovine</p>
+        </div>
+        <div class="figure reveal reveal--d3">
+          <p class="figure__value">170 <span class="figure__unit">mn €</span></p>
+          <p class="figure__label">Uloženo u razvoj od 2019.</p>
+        </div>
       </div>
+      <p class="figures__note reveal">
+        Konsolidirani podaci Auctor Grupe za 2024. Financijska izvješća revidira jedna
+        od Big 4 revizorskih kuća.
+      </p>
     </div>
   </section>
 
-  <!-- ================= PERFORMANCE ================= -->
-  <section class="section" id="group" aria-labelledby="group-h">
-    <div class="shell grid">
-      <div class="c4">
-        <p class="eyebrow">Grupa u 2025.</p>
-        <h2 id="group-h" class="h2">Rezultati, jasno prikazani.</h2>
-        <p class="lede" style="margin-top:1.25rem">
-          Konsolidirano godišnje izvješće Auctor Holdinga revidirao je Ernst &amp; Young Audit.
-          Izvješće neovisnog revizora potpisano je 26. lipnja 2026.
+  <!-- ============ PRISTUP ============ -->
+  <section class="section section--thread" id="pristup" aria-labelledby="pristup-h">
+    <div class="shell">
+      <p class="eyebrow reveal">Kako ulažemo</p>
+      <div class="lead reveal">
+        <h2 class="lead__title" id="pristup-h">Znak opisuje<br>i način rada.</h2>
+        <p class="lead__text">
+          Krug je ishodište, linija je veza između vizije i izvedbe, A je autorstvo.
+          Istim redoslijedom ulazimo u svaku investiciju — i zato ne kupujemo tvrtke
+          da bismo ih preprodali.
         </p>
       </div>
-      <div class="c8" data-in>
-        <div class="panel">
-          <div class="figs">
-            <div class="fig"><p class="fig__v num">1.086 mil. €</p><p class="fig__l">Konsolidirani prihodi</p></div>
-            <div class="fig"><p class="fig__v num">66 mil. €</p><p class="fig__l">EBITDA</p></div>
-            <div class="fig"><p class="fig__v num">1.043 mil. €</p><p class="fig__l">Ukupna imovina</p></div>
-            <div class="fig"><p class="fig__v num">2.555</p><p class="fig__l">Zaposleni na kraju godine</p></div>
-          </div>
-        </div>
-      </div>
 
-      <div class="c12" data-in>
-        <div class="chart">
-          <div class="chart__in">
-            <div class="chart__bar">
-              <div class="seg" role="group" aria-label="Odaberite pokazatelj poslovanja">
-                <button type="button" id="btn-revenue" aria-pressed="true">Prihodi</button>
-                <button type="button" id="btn-ebitda" aria-pressed="false">EBITDA</button>
-              </div>
-              <p class="chart__note" id="chart-note">Prihodi Grupe, milijuni eura, 2019.–2025.</p>
-            </div>
-
-            <div class="plot" id="plot" role="img" aria-describedby="chart-note chart-table">
-              <div class="plot__col"><span class="plot__bar" style="transform:scaleY(.545)"></span></div>
-              <div class="plot__col"><span class="plot__bar" style="transform:scaleY(.576)"></span></div>
-              <div class="plot__col"><span class="plot__bar" style="transform:scaleY(.617)"></span></div>
-              <div class="plot__col"><span class="plot__bar" style="transform:scaleY(.751)"></span></div>
-              <div class="plot__col"><span class="plot__bar" style="transform:scaleY(.896)"></span></div>
-              <div class="plot__col"><span class="plot__bar" style="transform:scaleY(.864)"></span></div>
-              <div class="plot__col plot__col--last"><span class="plot__bar" style="transform:scaleY(1)"></span></div>
-            </div>
-            <div class="axis" id="axis">
-              <div><b class="num">515</b><span>2019</span></div>
-              <div><b class="num">544</b><span>2020</span></div>
-              <div><b class="num">583</b><span>2021</span></div>
-              <div><b class="num">709</b><span>2022</span></div>
-              <div><b class="num">846</b><span>2023</span></div>
-              <div><b class="num">938</b><span>2024</span></div>
-              <div><b class="num">1,086</b><span>2025</span></div>
-            </div>
-
-            <!-- Accessible data-table alternative to the visual chart. -->
-            <div class="u-hide"><table id="chart-table">
-              <caption>Prihodi i EBITDA Auctor Grupe, milijuni eura</caption>
-              <thead><tr><th scope="col">Godina</th><th scope="col">Prihodi</th><th scope="col">EBITDA</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">2019</th><td>515</td><td>25.5</td></tr>
-                <tr><th scope="row">2020</th><td>544</td><td>19.9</td></tr>
-                <tr><th scope="row">2021</th><td>583</td><td>27.9</td></tr>
-                <tr><th scope="row">2022</th><td>709</td><td>45.4</td></tr>
-                <tr><th scope="row">2023</th><td>846</td><td>50.5</td></tr>
-                <tr><th scope="row">2024</th><td>938</td><td>65.1</td></tr>
-                <tr><th scope="row">2025</th><td>1,086</td><td>66.2</td></tr>
-              </tbody>
-            </table></div>
-            <p class="source-note">
-              Izvori: <a href="https://www.datocms-assets.com/145797/1782751970-auctor-holding_consolidated-annual-report_2025-eng.pdf" target="_blank" rel="noopener">revidirano konsolidirano godišnje izvješće za 2025.</a>
-              i <a href="https://assets-eu-01.kc-usercontent.com/23883f12-8a12-01af-3f05-426faedce691/9735663a-ffc7-491c-854a-6f6a893ee2dc/Auctor%20Holding%20-%20Investor%20Presentation.pdf" target="_blank" rel="noopener">prezentacija kompanije iz lipnja 2025.</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= APPROACH ================= -->
-  <section class="section section--tint" id="approach" aria-labelledby="approach-h">
-    <div class="shell grid">
-      <div class="c4">
-        <p class="eyebrow">Kako gradimo</p>
-        <h2 id="approach-h" class="h2">Kapital, upravljanje, razvoj.</h2>
-        <p class="lede" style="margin-top:1.25rem">
-          Grupa ulaže u etablirane platforme, podržava iskusne operativne timove te raste
-          kroz akvizicije, unaprjeđenje imovine i nove modele upravljanja.
-        </p>
-      </div>
-      <ol class="c8 grid" style="grid-template-columns:repeat(auto-fit,minmax(14rem,1fr))">
-        <li class="rule" data-in style="--i:0">
-          <p class="rule__n num">01</p>
-          <h3>Akvizicije i financiranje</h3>
-          <p>Kapital usmjeravamo u tvrtke i projekte s jasnom tržišnom ulogom,
-             od hrvatskog turizma i zdravstva do novih regionalnih ulaganja.</p>
+      <ol class="steps">
+        <li class="step reveal">
+          <p class="step__glyph">
+            <svg viewBox="0 0 60 60" aria-hidden="true" focusable="false">
+              <circle class="g-fill" cx="30" cy="30" r="26"></circle>
+            </svg>
+          </p>
+          <p class="step__kicker">Krug — ishodište</p>
+          <h3 class="step__title">Preuzimanje</h3>
+          <p class="step__text">
+            Biramo tvrtke koje već drže vodeću poziciju na svom tržištu, ali im nedostaje
+            kapital ili struktura za sljedeći korak. Prvo ulaganje bio je Aminess, 2019.
+          </p>
         </li>
-        <li class="rule" data-in style="--i:1">
-          <p class="rule__n num">02</p>
-          <h3>Operativno upravljanje</h3>
-          <p>Kompanije u portfelju zadržavaju stručne upravljačke timove, dok se strategija,
-             financiranje i nadzor usklađuju na razini Grupe.</p>
+        <li class="step reveal reveal--d1">
+          <p class="step__glyph">
+            <svg viewBox="0 0 160 60" aria-hidden="true" focusable="false">
+              <circle class="g-fill" cx="18" cy="30" r="17"></circle>
+              <rect class="g-fill" x="34" y="26" width="122" height="8"></rect>
+            </svg>
+          </p>
+          <p class="step__kicker">Linija — veza</p>
+          <h3 class="step__title">Ulaganje</h3>
+          <p class="step__text">
+            Posložimo upravljanje i uložimo u imovinu — nove hotele, obnovljene kampove,
+            logistiku. Od 2019. u to je otišlo oko 170 milijuna eura.
+          </p>
         </li>
-        <li class="rule" data-in style="--i:2">
-          <p class="rule__n num">03</p>
-          <h3>Razvoj i integracija</h3>
-          <p>Svaka akvizicija nadograđuje postojeće sposobnosti te širi znanje o destinacijama,
-             doseg distribucije i iskustvo operativnih timova.</p>
+        <li class="step reveal reveal--d2">
+          <p class="step__glyph"><span class="step__mark" aria-hidden="true"></span></p>
+          <p class="step__kicker">A — autorstvo</p>
+          <h3 class="step__title">Vlasništvo</h3>
+          <p class="step__text">
+            Ostajemo vlasnik i potpisnik. Zaduženost prema vrijednosti imovine pala je
+            s 68,6 % u 2019. na 47,4 % u 2024., uz rast EBITDA-e od 20 % godišnje.
+          </p>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- ================= PORTFOLIO ================= -->
-  <section class="section" id="portfolio" aria-labelledby="portfolio-h">
+  <!-- ============ PORTFELJ ============ -->
+  <section class="section section--paper section--thread" id="portfelj" aria-labelledby="portfelj-h">
     <div class="shell">
-      <div class="grid" style="margin-bottom:var(--space)">
-        <div class="c4">
-          <p class="eyebrow">Portfelj</p>
-          <h2 id="portfolio-h" class="h2">Dva sektora, jedna logika.</h2>
-        </div>
-        <p class="c8 lede" style="align-self:end">
-          Dvije glavne operativne platforme ostvaruju više od milijardu eura prihoda,
-          uz regionalna ulaganja u zdravstvo i logistiku.
+      <p class="eyebrow reveal">Portfelj</p>
+      <div class="lead reveal">
+        <h2 class="lead__title" id="portfelj-h">Dva sektora,<br>jedna logika.</h2>
+        <p class="lead__text">
+          Turizam i farmacija dijele ono što tražimo: stvarnu imovinu, stabilnu potražnju
+          i posao koji se gradi godinama, a ne kvartalima.
         </p>
       </div>
 
-      <article class="co grid" data-in>
-        <div class="c4">
-          <picture class="co__photo">
-            <source srcset="/assets/photos/turizam.webp" type="image/webp">
-            <img src="/assets/photos/turizam.jpg" alt="Bazen hotela na obali s pogledom na more" width="1600" height="1100" loading="lazy" decoding="async">
-          </picture>
-          <p class="co__tag">01 — Turizam</p>
-          <h3 style="margin-top:.875rem">Aminess</h3>
-        </div>
-        <div class="c8">
-          <p>Jedna od vodećih turističkih grupa u Hrvatskoj. Portfelj obuhvaća 33 hotela,
-             kampa i resorta u 12 destinacija, uključujući imovinu u vlasništvu Grupe,
-             objekte u zakupu i hotele kojima upravlja za druge vlasnike.</p>
-          <div class="kv">
-            <div><p class="kv__v num">140 mil. €</p><p class="kv__l">Prihodi 2025.</p></div>
-            <div><p class="kv__v num">40 mil. €</p><p class="kv__l">EBITDA 2025.</p></div>
-            <div><p class="kv__v num">33 / 12</p><p class="kv__l">Objekti / destinacije</p></div>
+      <div>
+        <article class="holding reveal">
+          <div class="holding__grid">
+            <div>
+              <p class="holding__index">01 — Turizam</p>
+              <h3 class="holding__name">Aminess</h3>
+              <p class="holding__share">
+                <span><b>13 %</b> prihoda grupe</span>
+                <span><b>58 %</b> EBITDA-e grupe</span>
+              </p>
+            </div>
+            <div>
+              <p class="holding__text">
+                Četvrta hotelska kompanija u Hrvatskoj. Hoteli i kampovi u deset destinacija
+                na Jadranu, od ekonomskog do petzvjezdičnog segmenta, uz upravljanje tuđim
+                objektima pod markom Aminess.
+              </p>
+              <div class="kpis">
+                <div class="kpi">
+                  <p class="kpi__value">123 <span class="kpi__unit">mn €</span></p>
+                  <p class="kpi__label">Prihodi 2024.</p>
+                </div>
+                <div class="kpi">
+                  <p class="kpi__value">6.300</p>
+                  <p class="kpi__label">Smještajnih jedinica</p>
+                </div>
+                <div class="kpi">
+                  <p class="kpi__value">1,8 <span class="kpi__unit">mn</span></p>
+                  <p class="kpi__label">Noćenja godišnje</p>
+                </div>
+              </div>
+              <p class="members">
+                <span class="member">Aminess</span>
+                <span class="member">HTP Korčula</span>
+                <span class="member">HTP Orebić</span>
+                <span class="member">Hoteli Njivice</span>
+                <span class="member">Romana</span>
+                <span class="member">Meeting Point Croatia</span>
+              </p>
+            </div>
           </div>
-          <p class="chips">
-            <span>Aminess d.d.</span><span>Hoteli Njivice</span><span>Romana</span>
-            <span>Nova Camping</span><span>Aminess Hospitality Group</span>
-          </p>
-        </div>
-      </article>
+        </article>
 
-      <article class="co grid" data-in>
-        <div class="c4">
-          <picture class="co__photo">
-            <source srcset="/assets/photos/farmacija.webp" type="image/webp">
-            <img src="/assets/photos/farmacija.jpg" alt="Medicinska oprema u bolničkoj sobi" width="1600" height="1100" loading="lazy" decoding="async">
-          </picture>
-          <p class="co__tag">02 — Zdravstvo</p>
-          <h3 style="margin-top:.875rem">Medika</h3>
-        </div>
-        <div class="c8">
-          <p>Najstarija hrvatska veledrogerija i vodeći distributer lijekova i medicinskih
-             proizvoda. Četiri distribucijska centra pokrivaju cijelu zemlju, a poslovanje uključuje
-             i mrežu ljekarni Prima Pharme te digitalnu platformu Pharmeria.</p>
-          <div class="kv">
-            <div><p class="kv__v num">960 mil. €</p><p class="kv__l">Prihodi 2025.</p></div>
-            <div><p class="kv__v num">4</p><p class="kv__l">Distribucijska centra</p></div>
-            <div><p class="kv__v num">71,01 %</p><p class="kv__l">Glasačka prava Grupe</p></div>
+        <article class="holding reveal">
+          <div class="holding__grid">
+            <div>
+              <p class="holding__index">02 — Farmacija</p>
+              <h3 class="holding__name">Medika</h3>
+              <p class="holding__share">
+                <span><b>88 %</b> prihoda grupe</span>
+                <span><b>43 %</b> EBITDA-e grupe</span>
+              </p>
+            </div>
+            <div>
+              <p class="holding__text">
+                Najveći veledrogerist i najveći lanac ljekarni u Hrvatskoj. Vlastiti
+                distribucijski centri pokrivaju cijelu zemlju, a od 2022. radi i digitalna
+                platforma Pharmeria.
+              </p>
+              <div class="kpis">
+                <div class="kpi">
+                  <p class="kpi__value">832 <span class="kpi__unit">mn €</span></p>
+                  <p class="kpi__label">Prihodi 2024.</p>
+                </div>
+                <div class="kpi">
+                  <p class="kpi__value">1.100</p>
+                  <p class="kpi__label">Zaposlenih</p>
+                </div>
+                <div class="kpi">
+                  <p class="kpi__value">3.000+</p>
+                  <p class="kpi__label">Kupaca u veleprodaji</p>
+                </div>
+              </div>
+              <p class="members">
+                <span class="member">Medika d.d.</span>
+                <span class="member">Ljekarne Prima Pharme</span>
+                <span class="member">Ljekarne Jagatić</span>
+                <span class="member">Pharmeria</span>
+              </p>
+            </div>
           </div>
-          <p class="chips">
-            <span>Medika d.d.</span><span>Ljekarne Prima Pharme</span>
-            <span>Ljekarne Jagatić</span><span>Pharmeria</span>
-          </p>
-        </div>
-      </article>
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- ================= BRAND STATEMENT ================= -->
-  <section class="band" aria-label="Izjava brenda">
-    <div class="band__bg">
-      <picture>
-        <source srcset="/assets/photos/traka.webp" type="image/webp">
-        <img src="/assets/photos/traka.jpg" alt="" width="2400" height="1000" loading="lazy" decoding="async">
-      </picture>
-    </div>
-    <div class="band__scrim" aria-hidden="true"></div>
+  <!-- ============ RAST ============ -->
+  <section class="section section--navy section--thread" id="rast" aria-labelledby="rast-h">
     <div class="shell">
-      <blockquote>Stvaramo vrijednost vizijom i vodstvom.</blockquote>
-      <p class="band__sub">Krug · Linija · A</p>
-    </div>
-  </section>
-
-  <!-- ================= VALUE CREATION ================= -->
-  <section class="section section--tint" id="value-creation" aria-labelledby="value-creation-h">
-    <div class="shell">
-      <div class="grid" style="margin-bottom:var(--space)">
-        <div class="c4">
-          <p class="eyebrow">Stvaranje vrijednosti</p>
-          <h2 id="value-creation-h" class="h2">Vrijednost nastaje u poslovanju.</h2>
-        </div>
-        <p class="c8 lede" style="align-self:end">
-          Najjasniji rezultat ulaganja nije holding struktura, nego bolja imovina,
-          šira mreža i operativna platforma spremna za sljedeći projekt.
-        </p>
-      </div>
-      <div class="esg">
-        <div class="esg__i" data-in style="--i:0"><div class="esg__in">
-          <h3>Ulaganje u portfelj</h3>
-          <p>Aminess Avalona otvorena je 2024., dok je Atea obnovljena i podignuta na razinu
-             kampa s pet zvjezdica prije ponovnog otvaranja u lipnju 2025.</p>
-        </div></div>
-        <div class="esg__i" data-in style="--i:1"><div class="esg__in">
-          <h3>Operativno znanje</h3>
-          <p>Aminess Hospitality Group upravlja vlastitim, unajmljenim i partnerskim objektima,
-             dok Medika opskrbljuje hrvatsko tržište kroz četiri distribucijska centra.</p>
-        </div></div>
-        <div class="esg__i" data-in style="--i:2"><div class="esg__in">
-          <h3>Upravljanje i izvještavanje</h3>
-          <p>Konsolidirani financijski izvještaji pripremaju se prema MSFI-ju kako je usvojen u EU-u
-             i objavljuju uz neovisno izvješće društva Ernst &amp; Young Audit.</p>
-        </div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= GROWTH ================= -->
-  <section class="section" id="growth" aria-labelledby="growth-h">
-    <div class="shell grid">
-      <div class="c4">
-        <p class="eyebrow">Rast</p>
-        <h2 id="growth-h" class="h2">Od dvije platforme do regionalne grupe.</h2>
-        <p class="lede" style="margin-top:1.25rem">
-          Turizam i zdravstvo ostaju temelj, dok su transakcije u 2025. i 2026. proširile
-          Grupu na poljsku ljekarničku maloprodaju i infrastrukturu lučke logistike.
-        </p>
-      </div>
-      <div class="c8" data-in>
-        <table>
-          <caption>Odabrane prekretnice, 2019.–2026.</caption>
-          <tbody>
-            <tr><th scope="row" class="num">2019</th><td>Osnovan je Auctor Holding koji postaje matično društvo Grupe.</td></tr>
-            <tr><th scope="row" class="num">2021</th><td>Aminess postaje većinski vlasnik HTP-a Korčula i HTP-a Orebić.</td></tr>
-            <tr><th scope="row" class="num">2024</th><td>Na otoku Pagu otvara se Aminess Avalona Camping Resort s pet zvjezdica.</td></tr>
-            <tr><th scope="row" class="num">2025</th><td>Udio Grupe u Mediki raste na 68,09 %; Auctor Beta stječe 25 % udjela u vlasniku poljskog lanca ljekarni Gemini.</td></tr>
-            <tr><th scope="row" class="num">2025</th><td>Izdane su osigurane obveznice u iznosu od 40 milijuna eura i milijardu čeških kruna, obje s dospijećem 2030.</td></tr>
-            <tr><th scope="row" class="num">2026</th><td>Aminess raste na 33 objekta u 12 destinacija; HTP Korčula i HTP Orebić pripajaju se Aminessu.</td></tr>
-            <tr><th scope="row" class="num">2026</th><td>Zajedničko ulaganje DD Rail Properties stječe 49,99 % poljskog OT Logisticsa.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= GOVERNANCE ================= -->
-  <section class="section section--tint" id="governance" aria-labelledby="governance-h">
-    <div class="shell">
-      <div class="grid" style="margin-bottom:var(--space)">
-        <div class="c4">
-          <p class="eyebrow">Upravljanje</p>
-          <h2 id="governance-h" class="h2">Ljudi koji preuzimaju odgovornost.</h2>
-        </div>
-        <p class="c8 lede" style="align-self:end">
-          Auctor Holding zajednički kontroliraju Auctor Prime i JTPEG Croatia Investments.
-          Na kraju 2025. svaki je imao 45 %, dok je preostalih 10 % držao Perrarus Holding.
-          Upravu čine Oleg Uskoković i Josef Pilka.
-        </p>
-      </div>
-      <div class="grid">
-        <article class="c6 who" data-in style="--i:0"><div class="who__in">
-          <p class="who__name">Oleg Uskoković</p>
-          <p class="who__role">Član Uprave Auctor Holdinga i direktor društva AUCTOR d.o.o.</p>
-          <p class="who__bio">
-            Član Uprave od 24. srpnja 2019.; ponovno izabran 25. listopada 2024.
-            Također djeluje u nadzornim tijelima društava iz portfelja Grupe.
-          </p>
-        </div></article>
-        <article class="c6 who" data-in style="--i:1"><div class="who__in">
-          <p class="who__name">Josef Pilka</p>
-          <p class="who__role">Član Uprave Auctor Holdinga i direktor društva AUCTOR d.o.o.</p>
-          <p class="who__bio">
-            Član Uprave od 16. rujna 2020.; ponovno izabran 17. rujna 2025.
-            Sudjeluje u upravljanju i nadzoru društava diljem Grupe.
-          </p>
-        </div></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= PUBLIC DOCUMENTS ================= -->
-  <section class="section" id="documents" aria-labelledby="documents-h">
-    <div class="shell">
-      <div class="grid" style="margin-bottom:var(--space)">
-        <div class="c4">
-          <p class="eyebrow">Javni dokumenti</p>
-          <h2 id="documents-h" class="h2">Izvorni dokumenti, izravno dostupni.</h2>
-        </div>
-        <p class="c8 lede" style="align-self:end">
-          Ove poveznice vode na javna izvješća i regulatorne dokumente koji potvrđuju brojke
-          i činjenice predstavljene na ovoj stranici.
+      <p class="eyebrow reveal">Rast</p>
+      <div class="lead reveal">
+        <h2 class="lead__title" id="rast-h">Šest godina<br>na istoj liniji.</h2>
+        <p class="lead__text">
+          Svaka akvizicija nadovezuje se na prethodnu: jača postojeću destinaciju,
+          mrežu ili operativni tim.
         </p>
       </div>
 
-      <div class="ir">
-        <div class="ir__box" data-in style="--i:0"><div class="ir__in">
-          <h3>Izvješća Grupe</h3>
-          <div class="ir__list">
-            <a class="ir__row ir__row--link" href="https://www.datocms-assets.com/145797/1782751970-auctor-holding_consolidated-annual-report_2025-eng.pdf" target="_blank" rel="noopener">
-              <span class="ir__date num">2025</span>
-              <span class="ir__t">Konsolidirano godišnje izvješće Auctor Holdinga</span>
-              <span class="ir__meta">PDF · 108 stranica</span>
-            </a>
-            <a class="ir__row ir__row--link" href="https://assets-eu-01.kc-usercontent.com/23883f12-8a12-01af-3f05-426faedce691/9735663a-ffc7-491c-854a-6f6a893ee2dc/Auctor%20Holding%20-%20Investor%20Presentation.pdf" target="_blank" rel="noopener">
-              <span class="ir__date num">06/2025</span>
-              <span class="ir__t">Prezentacija kompanije</span>
-              <span class="ir__meta">PDF · 26 stranica</span>
-            </a>
-            <a class="ir__row ir__row--link" href="https://auctorfinancesk.sk/sites/default/files/Auctor%20Finance%20SK%20-%20Prospekt%20zo%20d%C5%88a%2020.%20j%C3%BAna%202025.pdf" target="_blank" rel="noopener">
-              <span class="ir__date num">2030</span>
-              <span class="ir__t">Prospekt obveznice AUCTOR FIN 5,50/2030</span>
-              <span class="ir__meta">PDF · NBS</span>
-            </a>
+      <ol class="track">
+        <li class="track__item reveal">
+          <div class="track__row">
+            <p class="track__year">2019.</p>
+            <p class="track__text">Osnivanje Auctora i preuzimanje Aminessa — početak ulaganja u turizam.</p>
           </div>
-        </div></div>
-
-        <div class="ir__box" data-in style="--i:1"><div class="ir__in">
-          <h3>Poslovanje u Hrvatskoj</h3>
-          <div class="ir__list">
-            <a class="ir__row ir__row--link" href="https://infobiz.fina.hr/tvrtka/auctor-d-o-o/OIB-19203050598" target="_blank" rel="noopener">
-              <span class="ir__t">AUCTOR d.o.o. — podaci o društvu i registrirane djelatnosti</span>
-              <span class="ir__meta">FINA Info.BIZ</span>
-            </a>
-            <a class="ir__row ir__row--link" href="https://www.medika.hr/media/3443/fs-200-medika_financijski-izvje%C5%A1taj-2025-eng.pdf" target="_blank" rel="noopener">
-              <span class="ir__t">Medika d.d. — godišnje izvješće za 2025.</span>
-              <span class="ir__meta">PDF · 62 stranice</span>
-            </a>
-            <a class="ir__row ir__row--link" href="https://www.aminess-hospitality-group.com/hr/o-nama/" target="_blank" rel="noopener">
-              <span class="ir__t">Aminess Hospitality Group — portfelj i razvoj</span>
-              <span class="ir__meta">33 objekta</span>
-            </a>
+        </li>
+        <li class="track__item reveal">
+          <div class="track__row">
+            <p class="track__year">2021.</p>
+            <p class="track__text">Preuzimanje HTP-a Korčula i HTP-a Orebić.</p>
           </div>
-          <p class="cap" style="margin-top:1rem">
-            AUCTOR d.o.o. · OIB 19203050598 · Ulica kneza Branimira 71/E, Zagreb.
-          </p>
-        </div></div>
-      </div>
+        </li>
+        <li class="track__item reveal">
+          <div class="track__row">
+            <p class="track__year">2022.</p>
+            <p class="track__text">Hoteli Njivice i Romana; otvoren Aminess Khalani, prvi hotel s pet zvjezdica.</p>
+          </div>
+        </li>
+        <li class="track__item reveal">
+          <div class="track__row">
+            <p class="track__year">2024.</p>
+            <p class="track__text">Nova Camping i AHM; otvoren Avalona Camping Resort na Pagu.</p>
+          </div>
+        </li>
+        <li class="track__item track__item--now reveal">
+          <div class="track__row">
+            <p class="track__year">2025.</p>
+            <p class="track__text">Preuzimanje Meeting Point Croatia i ulazak u upravljanje destinacijom.</p>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <!-- ================= UPDATES ================= -->
-  <section class="section section--tint" id="updates" aria-labelledby="updates-h">
+  <!-- ============ UPRAVA ============ -->
+  <section class="section section--thread" id="uprava" aria-labelledby="uprava-h">
     <div class="shell">
-      <div class="grid" style="margin-bottom:var(--space)">
-        <div class="c4">
-          <p class="eyebrow">Novosti</p>
-          <h2 id="updates-h" class="h2">Najnoviji provjereni događaji.</h2>
-        </div>
-        <p class="c8 lede" style="align-self:end">
-          Odabrani događaji nakon poslovne 2025., izravno povezani s javnim izvorima.
+      <p class="eyebrow reveal">Uprava</p>
+      <div class="lead reveal">
+        <h2 class="lead__title" id="uprava-h">Tko potpisuje.</h2>
+        <p class="lead__text">
+          Auctor je zajedničko ulaganje Olega Uskokovića i J&amp;T Private Equity Group,
+          u vlasništvu 50 : 50. Strategija se donosi na razini grupe, a poslovanje vode
+          uprave pojedinih tvrtki.
         </p>
       </div>
-      <div class="news" data-in>
-        <a class="news__i" href="https://www.datocms-assets.com/145797/1782751970-auctor-holding_consolidated-annual-report_2025-eng.pdf" target="_blank" rel="noopener">
-          <p class="news__d num">26. lip 2026.</p>
-          <p class="news__t">Auctor Holding objavljuje revidirano konsolidirano godišnje izvješće za 2025.</p>
-          <p class="news__go">Pročitajte izvješće →</p>
-        </a>
-        <a class="news__i" href="https://www.datocms-assets.com/145797/1782751970-auctor-holding_consolidated-annual-report_2025-eng.pdf" target="_blank" rel="noopener">
-          <p class="news__d num">tra 2026.</p>
-          <p class="news__t">DD Rail Properties, zajedničko ulaganje u kojem sudjeluje Auctor Alfa, stječe 49,99 % OT Logisticsa.</p>
-          <p class="news__go">Pogledajte izvor →</p>
-        </a>
-        <a class="news__i" href="https://www.datocms-assets.com/145797/1782751970-auctor-holding_consolidated-annual-report_2025-eng.pdf" target="_blank" rel="noopener">
-          <p class="news__d num">24. ožu 2026.</p>
-          <p class="news__t">Dionice Medike završavaju posljednji dan trgovanja na Zagrebačkoj burzi.</p>
-          <p class="news__go">Pročitajte izvješće →</p>
-        </a>
+
+      <div class="people">
+        <article class="person reveal">
+          <h3 class="person__name">Oleg Uskoković</h3>
+          <p class="person__role">Suvlasnik i član Uprave od 2019.</p>
+          <p class="person__bio">
+            Odvjetnik i senior partner u odvjetničkom društvu Uskoković &amp; Partneri.
+            Iskustvo u bankarstvu, tržištu kapitala i strukturiranim transakcijama;
+            član nadzornih odbora u nizu hrvatskih kompanija.
+          </p>
+        </article>
+        <article class="person reveal reveal--d1">
+          <h3 class="person__name">Josef Pilka</h3>
+          <p class="person__role">Član Uprave od 2020.</p>
+          <p class="person__bio">
+            U J&amp;T-u od 2013. na akvizicijama i spajanjima. Od 2017. do 2020. u Zagrebu,
+            gdje je vodio investicijsko bankarstvo J&amp;T Banke. Član nadzornih odbora
+            unutar Auctor Grupe.
+          </p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ================= FAQ (AEO) ================= -->
-  <section class="section" id="faq" aria-labelledby="faq-h">
-    <div class="shell grid">
-      <div class="c4">
-        <p class="eyebrow">Pitanja i odgovori</p>
-        <h2 id="faq-h" class="h2">Činjenice koje se najčešće traže.</h2>
-        <p class="lede" style="margin-top:1.25rem">
-          Sažeti i cjeloviti odgovori utemeljeni na javnim korporativnim i regulatornim izvorima.
-        </p>
-      </div>
-      <div class="c8 qa">
-        <details open>
-          <summary>Što je Auctor Group?</summary>
-          <p>Auctor Group investicijska je grupa čije je matično društvo, Auctor Holding, a.s.,
-             osnovano 2019. Dvije su glavne operativne platforme turizam kroz Aminess te
-             distribucija i maloprodaja farmaceutskih proizvoda kroz Mediku.</p>
-        </details>
-        <details>
-          <summary>Kakve je rezultate Auctor Group ostvario u 2025.?</summary>
-          <p>Grupa je ostvarila 1,086 milijardi eura konsolidiranih prihoda, 66 milijuna eura EBITDA-e
-             i 20,6 milijuna eura neto dobiti. Ukupna imovina na kraju godine iznosila je 1,043 milijarde eura.</p>
-        </details>
-        <details>
-          <summary>Tko je vlasnik Auctor Grupe?</summary>
-          <p>Na dan 31. prosinca 2025. Auctor Prime d.o.o. i JTPEG Croatia Investments, a.s.
-             držali su po 45 %, dok je Perrarus Holding a.s. držao 10 %. Grupu zajednički
-             kontroliraju Auctor Prime i JTPEG Croatia Investments.</p>
-        </details>
-        <details>
-          <summary>U kojim sektorima posluje Auctor Group?</summary>
-          <p>Glavne su platforme turizam kroz Aminess Group te farmaceutska distribucija i maloprodaja
-             kroz Medika Group. Grupa ima i manjinski udio u poljskom lancu ljekarni Gemini te
-             zajedničko ulaganje povezano s OT Logisticsom.</p>
-        </details>
-        <details>
-          <summary>Koji su registrirani podaci društva AUCTOR d.o.o. u Hrvatskoj?</summary>
-          <p>AUCTOR d.o.o. za poslovno savjetovanje, OIB 19203050598, aktivno je društvo sa sjedištem
-             u Ulici kneza Branimira 71/E u Zagrebu. Jedini je član društva Auctor Holding, a.s.,
-             a direktori su Oleg Uskoković i Josef Pilka.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= CONTACT ================= -->
-  <section class="section section--tint" id="contact" aria-labelledby="contact-h">
-    <div class="shell grid">
-      <div class="c8">
+  <!-- ============ KONTAKT ============ -->
+  <section class="section section--navy section--thread section--last" id="kontakt" aria-labelledby="kontakt-h">
+    <div class="shell contact">
+      <div class="reveal">
         <p class="eyebrow">Kontakt</p>
-        <h2 id="contact-h" class="h2">Započnimo razgovor.</h2>
-        <p class="lede" style="margin-top:1.5rem">
-          Ukratko nam predstavite svoju tvrtku, priliku ili upit. Vašu ćemo poruku
-          usmjeriti odgovarajućoj osobi u Auctoru.
+        <h2 class="contact__title" id="kontakt-h">Imate posao<br>koji tražimo?</h2>
+        <p class="lead__text" style="margin-top:1.75rem">
+          Razgovaramo s vlasnicima koji traže partnera za sljedeću fazu, s poslovnim
+          i financijskim partnerima te s novinarima. Odgovaramo u dva radna dana.
         </p>
-        <p style="margin-top:2rem"><button class="btn js-contact-open" type="button">Otvorite kontakt obrazac</button></p>
+        <p class="hero__actions">
+          <button class="btn btn--solid js-contact-open" type="button"><span>Pošalji upit</span></button>
+        </p>
       </div>
-      <div class="c4">
-        <div class="k"><p class="k__k">AUCTOR d.o.o.</p><p class="k__v">Ulica kneza Branimira 71/E<br>10000 Zagreb, Hrvatska</p></div>
-        <div class="k"><p class="k__k">Registrirani podaci</p><p class="k__v">OIB 19203050598<br>MBS 01209043</p></div>
+
+      <div class="contact__list reveal reveal--d1">
+        <div class="contact__row">
+          <p class="contact__key">Poslovne prilike</p>
+          <p class="contact__val">Akvizicije, partnerstva i korporativni upiti</p>
+        </div>
+        <div class="contact__row">
+          <p class="contact__key">Mediji</p>
+          <p class="contact__val">Upiti za medije i informacije o grupi</p>
+        </div>
+        <div class="contact__row">
+          <p class="contact__key">Sjedište</p>
+          <p class="contact__val">Ulica kneza Branimira 71/E<br>10000 Zagreb, Hrvatska</p>
+        </div>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="foot">
-  <div class="shell">
-    <div class="foot__map">
-      <nav class="foot__col" aria-labelledby="f-1">
-        <h3 id="f-1">O grupi</h3>
-        <ul>
-          <li><a href="#group">Grupa u brojkama</a></li>
-          <li><a href="#approach">Kako gradimo</a></li>
-          <li><a href="#growth">Rast od 2019.</a></li>
-          <li><a href="#governance">Upravljanje i vlasništvo</a></li>
-        </ul>
-      </nav>
-      <nav class="foot__col" aria-labelledby="f-2">
-        <h3 id="f-2">Portfelj</h3>
-        <ul>
-          <li><a href="#portfolio">Turizam — Aminess</a></li>
-          <li><a href="#portfolio">Zdravstvo — Medika</a></li>
-          <li><a href="#value-creation">Stvaranje vrijednosti</a></li>
-        </ul>
-      </nav>
-      <nav class="foot__col" aria-labelledby="f-3">
-        <h3 id="f-3">Dokumenti</h3>
-        <ul>
-          <li><a href="#documents">Izvješća i izvori</a></li>
-          <li><a href="#group">Rezultati 2025.</a></li>
-          <li><a href="#faq">Pitanja i odgovori</a></li>
-        </ul>
-      </nav>
-      <nav class="foot__col" aria-labelledby="f-4">
-        <h3 id="f-4">Kontakt</h3>
-        <ul>
-          <li><button class="foot__contact js-contact-open" type="button">Kontakt obrazac</button></li>
-          <li><a href="https://infobiz.fina.hr/tvrtka/auctor-d-o-o/OIB-19203050598" target="_blank" rel="noopener">Profil društva na FINA-i</a></li>
-          <li><a href="#updates">Najnovije novosti</a></li>
-        </ul>
+<footer class="footer">
+  <div class="footer__mark" aria-hidden="true"></div>
+  <div class="shell footer__inner">
+    <div>
+      <img src="/v1/assets/lockup-v1-onDark.png" alt="Auctor Group" width="1200" height="440" style="width:180px" loading="lazy">
+      <nav class="footer__nav" aria-label="Podnožje">
+        <a href="#grupa">Grupa</a>
+        <a href="#pristup">Pristup</a>
+        <a href="#portfelj">Portfelj</a>
+        <a href="#rast">Rast</a>
+        <a href="#uprava">Uprava</a>
+        <a href="#kontakt">Kontakt</a>
       </nav>
     </div>
-
-    <div class="foot__brand">
-      <img src="/assets/lockup-v1-onDark.png" alt="Auctor Group" width="1200" height="440" style="width:170px" loading="lazy">
-      <p class="cap" style="color:rgba(238,243,246,.6);max-width:34ch">
-        Investicijska grupa usmjerena na turizam, zdravstvo i povezane regionalne prilike.
-      </p>
-    </div>
-    <p class="foot__legal">
-      <span>© 2026. Auctor Group</span>
-      <span>Financijski podaci za poslovnu 2025. godinu</span>
-      <span>Izvori provjereni 7. kolovoza 2026.</span>
-    </p>
+    <nav class="lang" aria-label="Verzije dizajna">
+      <a href="/hr/" aria-current="true">V1</a>
+      <a href="/v2/hr/">V2</a>
+    </nav>
+  </div>
+  <div class="shell footer__legal">
+    <span>© 2026. Auctor Group</span>
+    <span>Podaci za 2024. godinu</span>
+    <span>Auctor Group</span>
   </div>
 </footer>
 
@@ -796,10 +579,12 @@
   <div class="contact-modal__panel">
     <header class="contact-modal__head">
       <div>
-        <p class="eyebrow">Kontaktirajte Auctor</p>
+        <p class="eyebrow">Kontakt</p>
         <h2 id="contact-dialog-title">Započnimo razgovor.</h2>
       </div>
-      <button class="contact-modal__close" type="button" aria-label="Zatvori kontakt obrazac" data-contact-close>×</button>
+      <button class="contact-modal__close" type="button" aria-label="Zatvori kontakt obrazac" data-contact-close>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
     </header>
 
     <form class="contact-form" id="contact-form" name="contact-v1-hr" action="/contact.ashx" method="post" data-netlify="true" netlify-honeypot="website">
@@ -850,7 +635,7 @@
       </label>
 
       <div class="contact-form__actions">
-        <button class="btn" type="submit">Pošalji poruku</button>
+        <button class="btn btn--solid" type="submit"><span>Pošalji poruku</span></button>
         <p class="contact-form__status" id="contact-form-status" role="status" aria-live="polite"></p>
       </div>
     </form>
@@ -861,139 +646,24 @@
 <script>
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var targets = document.querySelectorAll('.reveal, .sign, .track__item');
 
-  /* Content entrance: CSS scroll-driven animations with an observer fallback. */
-  var hasScrollTimeline = CSS && CSS.supports && CSS.supports('animation-timeline: view()');
-  var items = document.querySelectorAll('[data-in]');
-  var seal = document.querySelector('.seal');
-
-  if (reduce.matches) {
-    items.forEach(function (el) { el.classList.add('on'); });
-    if (seal) seal.classList.add('on');
-  } else {
-    requestAnimationFrame(function () {
-      document.querySelectorAll('.hero [data-in]').forEach(function (el) { el.classList.add('on'); });
-      if (seal) seal.classList.add('on');
-    });
-    if (!hasScrollTimeline && 'IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (!e.isIntersecting) return;
-          e.target.classList.add('on');
-          io.unobserve(e.target);
-        });
-      }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
-      document.querySelectorAll('main > :not(.hero) [data-in]').forEach(function (el) { io.observe(el); });
-    } else if (!hasScrollTimeline) {
-      items.forEach(function (el) { el.classList.add('on'); });
-    }
+  if (reduce.matches || !('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('is-in'); });
+    return;
   }
 
-  /* Performance chart. */
-  var DATA = {
-    revenue: { label: 'Prihodi Grupe, milijuni eura, 2019.–2025.',
-               values: [515, 544, 583, 709, 846, 938, 1086], format: function (v) { return v >= 1000 ? '1.086' : String(v).replace('.', ','); } },
-    ebitda:  { label: 'EBITDA Grupe, milijuni eura, 2019.–2025.',
-               values: [25.5, 19.9, 27.9, 45.4, 50.5, 65.1, 66.2], format: function (v) { return String(v).replace('.', ','); } }
-  };
-  var bars = document.querySelectorAll('#plot .plot__bar');
-  var vals = document.querySelectorAll('#axis b');
-  var note = document.getElementById('chart-note');
-  var buttons = { revenue: document.getElementById('btn-revenue'), ebitda: document.getElementById('btn-ebitda') };
-
-  function draw(key) {
-    var set = DATA[key];
-    var max = Math.max.apply(null, set.values);
-    set.values.forEach(function (v, i) {
-      if (bars[i]) bars[i].style.transform = 'scaleY(' + (v / max).toFixed(4) + ')';
-      if (vals[i]) vals[i].textContent = set.format(v);
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-in');
+      io.unobserve(entry.target);
     });
-    note.textContent = set.label;
-    Object.keys(buttons).forEach(function (k) {
-      buttons[k].setAttribute('aria-pressed', String(k === key));
-    });
-  }
-  Object.keys(buttons).forEach(function (k) {
-    buttons[k].addEventListener('click', function () { draw(k); });
-  });
-  draw('revenue');
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
 
-  /* Accessible contact modal. */
-  var dialog = document.getElementById('contact-dialog');
-  var openers = document.querySelectorAll('.js-contact-open');
-  var closeButton = dialog && dialog.querySelector('[data-contact-close]');
-  var lastTrigger = null;
-
-  function openContact(event) {
-    lastTrigger = event.currentTarget;
-    if (typeof dialog.showModal === 'function') dialog.showModal();
-    else dialog.setAttribute('open', '');
-    var firstField = dialog.querySelector('input:not([type="checkbox"])');
-    if (firstField) window.setTimeout(function () { firstField.focus(); }, 0);
-  }
-
-  function closeContact() {
-    if (typeof dialog.close === 'function') dialog.close();
-    else dialog.removeAttribute('open');
-  }
-
-  openers.forEach(function (button) { button.addEventListener('click', openContact); });
-  if (closeButton) closeButton.addEventListener('click', closeContact);
-  if (dialog) {
-    dialog.addEventListener('click', function (event) {
-      if (event.target === dialog) closeContact();
-    });
-    dialog.addEventListener('close', function () {
-      if (lastTrigger) lastTrigger.focus();
-    });
-  }
-
-  /* Submit without leaving the page; native POST remains available without JavaScript. */
-  var form = document.getElementById('contact-form');
-  var status = document.getElementById('contact-form-status');
-  if (form && window.fetch) {
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      var submit = form.querySelector('[type="submit"]');
-      submit.disabled = true;
-      status.className = 'contact-form__status';
-      status.textContent = 'Šaljemo poruku…';
-
-      var isNetlify = window.location.hostname === 'auctor.orka.solutions' || /(^|\.)netlify\.app$/.test(window.location.hostname);
-      var formData = new FormData(form);
-      var request = isNetlify ? {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      } : {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: formData,
-        credentials: 'same-origin'
-      };
-
-      fetch(isNetlify ? '/' : form.action, request).then(function (response) {
-        if (isNetlify) {
-          if (!response.ok) throw new Error('Poruku nije bilo moguće poslati. Pokušajte ponovno.');
-          return {};
-        }
-        return response.json().catch(function () { return {}; }).then(function (data) {
-          if (!response.ok) throw new Error(data.message || 'Poruku nije bilo moguće poslati. Pokušajte ponovno.');
-          return data;
-        });
-      }).then(function () {
-        form.reset();
-        status.className = 'contact-form__status is-success';
-        status.textContent = 'Hvala. Vaša je poruka poslana.';
-      }).catch(function (error) {
-        status.className = 'contact-form__status is-error';
-        status.textContent = error.message;
-      }).finally(function () {
-        submit.disabled = false;
-      });
-    });
-  }
+  targets.forEach(function (el) { io.observe(el); });
 })();
 </script>
+<script src="../variants.js"></script>
 </body>
 </html>

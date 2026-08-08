@@ -1,4 +1,4 @@
-/* Functional additions for V0. Visual values come exclusively from the untouched V0 source. */
+/* Functional additions for V1. Visual values come exclusively from the original source. */
 @layer blocks {
   .btn { font-family: var(--font-sans); }
 

@@ -6,15 +6,15 @@ also retains a portable ASP.NET `.ashx` contact handler and SMTP fallback.
 
 ## Netlify preview
 
-Each design route contains a uniquely named static form (`contact-v0` through `contact-v3`)
-with Netlify form detection and a honeypot enabled. On `auctor.orka.solutions` and Netlify
+Each language route contains a uniquely named static form (`contact-v1`, `contact-v1-hr`,
+`contact-v2` and `contact-v2-hr`) with Netlify form detection and a honeypot enabled. On `auctor.orka.solutions` and Netlify
 deploy-preview domains, JavaScript submits URL-encoded form data to the site root, as required
 by Netlify Forms.
 
 In the Netlify project UI:
 
 1. Open **Forms** and enable automatic form detection if it is not already enabled.
-2. Redeploy the site so Netlify scans all four static forms.
+2. Redeploy the site so Netlify scans all four active static forms.
 3. Add a form-submission email notification for the required internal inbox.
 4. Send one test from each route and confirm it appears under the corresponding form name.
 
@@ -81,9 +81,8 @@ public URLs, serves the branded 404 page and enables compression and security he
    - an unknown URL — `404`, showing the branded error page rather than returning `200`
 2. Confirm that `http://auctor.hr/`, `https://auctor.hr/` and explicit `index.html` URLs each
    perform one permanent redirect to the matching `https://www.auctor.hr/` URL.
-3. Confirm that `/v0/`, `/v2/` and `/v3/` remain crawlable and return `200`, while their HTML
-   contains `noindex,follow`. Do not block these paths in `robots.txt`; crawlers must fetch the
-   pages to see the `noindex` instruction.
+3. Confirm that `/v2/` and `/v2/hr/` return `200` with `noindex,follow`, and that retired
+   `/v0/` and `/v3/` routes return permanent redirects to the matching active pages.
 4. Add the `https://www.auctor.hr/` property in Google Search Console and Bing Webmaster Tools.
    Submit `https://www.auctor.hr/sitemap.xml`, inspect the homepage and request indexing.
 5. Test the homepage with Google's Rich Results Test and Schema Markup Validator. Confirm that
@@ -91,10 +90,9 @@ public URLs, serves the branded 404 page and enables compression and security he
    without errors and use the production URLs.
 6. Use Search Console's HTTPS and Page indexing reports after deployment. Check again after
    Google has crawled the site and investigate any duplicate-canonical, redirect or 404 issues.
-7. Run Lighthouse on a cold mobile load. The site self-hosts its fonts, preloads only the hero
-   image and serves WebP alternatives; verify compression and long-lived asset caching at the
+7. Run Lighthouse on a cold mobile load. The site self-hosts its fonts and serves WebP
+   alternatives; verify compression and long-lived asset caching at the
    host/CDN level without applying long caching to HTML.
 
-Only the canonical homepage appears in the XML sitemap. The preserved V0 and the two identity
-previews are excluded intentionally because they duplicate the same corporate content and are
-not search landing pages.
+Only canonical V1 language pages appear in the XML sitemap. V2 is excluded intentionally
+because it duplicates the same corporate content and is not a search landing page.

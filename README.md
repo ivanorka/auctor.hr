@@ -1,16 +1,13 @@
 # Auctor Group website
 
-English-language corporate website for Auctor Group, using the **VER01** identity from
-the approved branding proposal: Circle · Line · A.
+English and Croatian corporate website for Auctor Group with two public design versions.
 
 ## Project structure
 
-- `index.html` — complete single-page website and contact modal
-- `site.css` — responsive design, light/dark colour modes and modal styles
-- `v0/` — original Croatian package with its CSS, assets and fonts preserved verbatim; only
-  `contact.css`, the shared contact behavior and the V0–V3 path are added
-- `v2/` — alternate website using the VER02 triangle-and-circle identity
-- `v3/` — alternate website using the VER03 progression identity
+- `index.html` and `hr/index.html` — canonical V1 website in English and Croatian
+- `v1/` — the former V0 visual package, renamed as V1 and used by the canonical pages
+- `v2/` — alternate V2 layout using the third identity's logo, mark and favicons
+- `_redirects` — permanent redirects from retired V0/V3 and explicit V1 preview routes
 - `variants.js` — shared reveal, contact-modal and dual Netlify/IIS submission behaviour
 - `contact.ashx` — server-side ASP.NET contact handler for the future IIS production host
 - `assets/` — identity assets for all three proposals and website photography
@@ -35,8 +32,8 @@ Serve the repository root with any static HTTP server and open `/`. The page its
 On `auctor.orka.solutions`, submissions use Netlify Forms. On the future IIS production host,
 the same forms fall back to the ASP.NET handler and server-only settings in `DEPLOYMENT.md`.
 
-The canonical homepage is the only indexable version. `/v0/`, `/v2/` and `/v3/` remain
-accessible as identity previews but deliberately use `noindex,follow` and point their canonical
-link to `/`.
+V1 at `/` and `/hr/` is canonical and indexable. V2 remains available at `/v2/` and
+`/v2/hr/` as a `noindex,follow` identity preview. Retired V0 and V3 URLs redirect permanently
+to the closest matching active page.
 
 No recipient address, SMTP password or other production secret is stored in this repository.
