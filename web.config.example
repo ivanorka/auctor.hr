@@ -22,29 +22,37 @@
          before publishing this production-only canonical redirect. -->
     <rewrite>
       <rules>
+        <rule name="Legacy Croatian V1 route" stopProcessing="true">
+          <match url="^hr/?$" ignoreCase="true" />
+          <action type="Redirect" url="https://www.auctor.hr/" redirectType="Permanent" />
+        </rule>
+        <rule name="Legacy Croatian V2 route" stopProcessing="true">
+          <match url="^v2/hr/?$" ignoreCase="true" />
+          <action type="Redirect" url="https://www.auctor.hr/v2/" redirectType="Permanent" />
+        </rule>
         <rule name="Retired V0 English" stopProcessing="true">
           <match url="^v0/en/?$" ignoreCase="true" />
-          <action type="Redirect" url="https://www.auctor.hr/" redirectType="Permanent" />
+          <action type="Redirect" url="https://www.auctor.hr/en/" redirectType="Permanent" />
         </rule>
         <rule name="Retired V0 Croatian" stopProcessing="true">
           <match url="^v0/?$" ignoreCase="true" />
-          <action type="Redirect" url="https://www.auctor.hr/hr/" redirectType="Permanent" />
-        </rule>
-        <rule name="Explicit V1 English" stopProcessing="true">
-          <match url="^v1(?:/en)?/?$" ignoreCase="true" />
           <action type="Redirect" url="https://www.auctor.hr/" redirectType="Permanent" />
         </rule>
+        <rule name="Explicit V1 English" stopProcessing="true">
+          <match url="^v1/en/?$" ignoreCase="true" />
+          <action type="Redirect" url="https://www.auctor.hr/en/" redirectType="Permanent" />
+        </rule>
         <rule name="Explicit V1 Croatian" stopProcessing="true">
-          <match url="^v1/hr/?$" ignoreCase="true" />
-          <action type="Redirect" url="https://www.auctor.hr/hr/" redirectType="Permanent" />
+          <match url="^v1(?:/hr)?/?$" ignoreCase="true" />
+          <action type="Redirect" url="https://www.auctor.hr/" redirectType="Permanent" />
         </rule>
         <rule name="Retired V3 English" stopProcessing="true">
-          <match url="^v3/?$" ignoreCase="true" />
-          <action type="Redirect" url="https://www.auctor.hr/v2/" redirectType="Permanent" />
+          <match url="^v3/en/?$" ignoreCase="true" />
+          <action type="Redirect" url="https://www.auctor.hr/v2/en/" redirectType="Permanent" />
         </rule>
         <rule name="Retired V3 Croatian" stopProcessing="true">
-          <match url="^v3/hr/?$" ignoreCase="true" />
-          <action type="Redirect" url="https://www.auctor.hr/v2/hr/" redirectType="Permanent" />
+          <match url="^v3(?:/hr)?/?$" ignoreCase="true" />
+          <action type="Redirect" url="https://www.auctor.hr/v2/" redirectType="Permanent" />
         </rule>
         <rule name="Remove index.html" stopProcessing="true">
           <match url="^(.*\/)?index\.html$" ignoreCase="true" />

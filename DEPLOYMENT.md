@@ -81,7 +81,8 @@ public URLs, serves the branded 404 page and enables compression and security he
    - an unknown URL — `404`, showing the branded error page rather than returning `200`
 2. Confirm that `http://auctor.hr/`, `https://auctor.hr/` and explicit `index.html` URLs each
    perform one permanent redirect to the matching `https://www.auctor.hr/` URL.
-3. Confirm that `/v2/` and `/v2/hr/` return `200` with `noindex,follow`, and that retired
+3. Confirm that `/v2/` and `/v2/en/` return `200` with `noindex,follow`, that legacy `/hr/`
+   and `/v2/hr/` redirect to the Croatian defaults, and that retired
    `/v0/` and `/v3/` routes return permanent redirects to the matching active pages.
 4. Add the `https://www.auctor.hr/` property in Google Search Console and Bing Webmaster Tools.
    Submit `https://www.auctor.hr/sitemap.xml`, inspect the homepage and request indexing.

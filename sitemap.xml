@@ -5,27 +5,8 @@
   <url>
     <loc>https://www.auctor.hr/</loc>
     <lastmod>2026-08-08</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.auctor.hr/" />
-    <xhtml:link rel="alternate" hreflang="hr" href="https://www.auctor.hr/hr/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.auctor.hr/" />
-    <image:image>
-      <image:loc>https://www.auctor.hr/assets/photos/hero.jpg</image:loc>
-      <image:title>Auctor Group hospitality markets on the Adriatic coast</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.auctor.hr/assets/photos/turizam.jpg</image:loc>
-      <image:title>Aminess hospitality portfolio</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.auctor.hr/assets/photos/farmacija.jpg</image:loc>
-      <image:title>Medika pharmaceutical distribution and retail</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://www.auctor.hr/hr/</loc>
-    <lastmod>2026-08-08</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.auctor.hr/" />
-    <xhtml:link rel="alternate" hreflang="hr" href="https://www.auctor.hr/hr/" />
+    <xhtml:link rel="alternate" hreflang="hr" href="https://www.auctor.hr/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.auctor.hr/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.auctor.hr/" />
     <image:image>
       <image:loc>https://www.auctor.hr/assets/photos/hero.jpg</image:loc>
@@ -38,6 +19,25 @@
     <image:image>
       <image:loc>https://www.auctor.hr/assets/photos/farmacija.jpg</image:loc>
       <image:title>Distribucija i maloprodaja farmaceutskih proizvoda Medike</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.auctor.hr/en/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://www.auctor.hr/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.auctor.hr/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.auctor.hr/" />
+    <image:image>
+      <image:loc>https://www.auctor.hr/assets/photos/hero.jpg</image:loc>
+      <image:title>Auctor Group hospitality markets on the Adriatic coast</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.auctor.hr/assets/photos/turizam.jpg</image:loc>
+      <image:title>Aminess hospitality portfolio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.auctor.hr/assets/photos/farmacija.jpg</image:loc>
+      <image:title>Medika pharmaceutical distribution and retail</image:title>
     </image:image>
   </url>
 </urlset>
